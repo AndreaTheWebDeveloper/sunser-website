@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 88" width="300" height="88" role="img" aria-label="Sunser — Infissi e Serramenti">
+  <title>Sunser</title>
+  <defs>
+    <pattern id="stripes" x="0" y="0" width="7" height="100" patternUnits="userSpaceOnUse">
+      <rect width="7" height="100" fill="#9ecde8"/>
+      <rect width="3" height="100" fill="#b8dff5"/>
+    </pattern>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="rgba(0,0,0,0.2)"/>
+    </filter>
+  </defs>
+
+  <!-- ══════════════ WINDOW GRAPHIC ══════════════ -->
+
+  <!-- Outer frame -->
+  <rect x="4" y="4" width="88" height="80" rx="3" fill="#d4d4d4" filter="url(#shadow)"/>
+  <rect x="4" y="4" width="88" height="80" rx="3" fill="#eaeaea" stroke="#cccccc" stroke-width="1"/>
+
+  <!-- Window scene background (stripes) -->
+  <rect x="10" y="10" width="76" height="68" rx="1" fill="url(#stripes)"/>
+
+  <!-- ── SUN ── -->
+  <circle cx="36" cy="33" r="12" fill="#f5c200"/>
+  <!-- Rays -->
+  <line x1="36" y1="15" x2="36" y2="11" stroke="#f5c200" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="36" y1="51" x2="36" y2="55" stroke="#f5c200" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="18" y1="33" x2="14" y2="33" stroke="#f5c200" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="54" y1="33" x2="58" y2="33" stroke="#f5c200" stroke-width="2.8" stroke-linecap="round"/>
+  <line x1="23.5" y1="20.5" x2="20.6" y2="17.6" stroke="#f5c200" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="48.5" y1="45.5" x2="51.4" y2="48.4" stroke="#f5c200" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="48.5" y1="20.5" x2="51.4" y2="17.6" stroke="#f5c200" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="23.5" y1="45.5" x2="20.6" y2="48.4" stroke="#f5c200" stroke-width="2.2" stroke-linecap="round"/>
+
+  <!-- ── DARK RED BUILDING / "1" SHAPE ── -->
+  <!-- Three bars growing left→right forming a stylised skyline/bar chart -->
+  <rect x="58" y="48" width="8"  height="30" rx="1" fill="#8b1a1a"/>
+  <rect x="68" y="36" width="8"  height="42" rx="1" fill="#8b1a1a"/>
+  <rect x="78" y="24" width="8"  height="54" rx="1" fill="#8b1a1a"/>
+  <!-- Slight highlight on left edge -->
+  <rect x="58" y="48" width="2"  height="30" rx="1" fill="rgba(255,255,255,0.18)"/>
+  <rect x="68" y="36" width="2"  height="42" rx="1" fill="rgba(255,255,255,0.18)"/>
+  <rect x="78" y="24" width="2"  height="54" rx="1" fill="rgba(255,255,255,0.18)"/>
+
+  <!-- ── SUNSER TEXT inside window ── -->
+  <text
+    x="48" y="72"
+    font-family="Inter,Arial Black,sans-serif"
+    font-size="9"
+    font-weight="900"
+    letter-spacing="3"
+    fill="#1a1a1a"
+    text-anchor="middle">SUNSER</text>
+
+  <!-- ── FRAME: left casement panel (open outward-left) ── -->
+  <g transform="skewY(-4) translate(-6,4)">
+    <rect x="4" y="4" width="14" height="80" rx="2" fill="#e2e2e2" stroke="#c8c8c8" stroke-width="1"/>
+    <rect x="6" y="7"  width="10" height="74" rx="1" fill="rgba(190,225,245,0.3)"/>
+    <line x1="9" y1="7" x2="9" y2="81" stroke="rgba(255,255,255,0.65)" stroke-width="1.2"/>
+  </g>
+
+  <!-- ── FRAME: right casement panel (open outward-right) ── -->
+  <g transform="skewY(4) translate(82,-4)">
+    <rect x="0" y="4" width="14" height="80" rx="2" fill="#e2e2e2" stroke="#c8c8c8" stroke-width="1"/>
+    <rect x="2" y="7" width="10" height="74" rx="1" fill="rgba(190,225,245,0.3)"/>
+    <line x1="11" y1="7" x2="11" y2="81" stroke="rgba(255,255,255,0.65)" stroke-width="1.2"/>
+    <!-- Door handle -->
+    <rect x="0" y="36" width="4" height="11" rx="2" fill="#b0b0b0"/>
+  </g>
+
+  <!-- Centre divider -->
+  <rect x="45" y="10" width="6" height="68" rx="1" fill="#d8d8d8" stroke="#ccc" stroke-width=".5"/>
+
+  <!-- ══════════════ WORDMARK (white — works on dark bg) ══════════════ -->
+  <text
+    x="108" y="48"
+    font-family="Inter,Arial Black,sans-serif"
+    font-size="34"
+    font-weight="900"
+    letter-spacing="-1"
+    fill="#ffffff">SUNSER</text>
+
+  <!-- Tagline -->
+  <text
+    x="110" y="64"
+    font-family="Inter,Arial,sans-serif"
+    font-size="7.8"
+    font-weight="700"
+    letter-spacing="3.5"
+    fill="#7ab51d">INFISSI &amp; SERRAMENTI</text>
+</svg>
