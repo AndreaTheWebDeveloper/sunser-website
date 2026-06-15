@@ -573,6 +573,41 @@ textarea{resize:vertical;min-height:130px}
   .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
 }
 
+/* FAB */
+.fab{position:fixed;bottom:28px;right:28px;z-index:800;
+  display:flex;align-items:center;gap:9px;
+  padding:13px 22px 13px 18px;border-radius:999px;
+  background:var(--c-accent);color:#fff;
+  font-weight:700;font-size:.9rem;border:none;cursor:pointer;
+  box-shadow:0 4px 24px rgba(122,181,29,.48);
+  transition:all .35s cubic-bezier(.16,1,.3,1);
+  opacity:0;transform:translateY(22px) scale(.95);pointer-events:none;text-decoration:none}
+.fab.show{opacity:1;transform:none;pointer-events:auto}
+.fab:hover{background:var(--c-accent2);box-shadow:0 8px 32px rgba(122,181,29,.55);transform:translateY(-2px)}
+@media(max-width:640px){.fab{padding:16px;border-radius:50%;bottom:20px;right:20px} .fab-lbl{display:none}}
+
+/* Modals */
+dialog.site-modal{border:none;padding:0;border-radius:var(--r-lg);max-width:min(680px,92vw);max-height:90dvh;overflow:hidden;box-shadow:var(--sh-xl)}
+dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)}
+.modal-wrap{overflow-y:auto;max-height:90dvh;padding:44px 48px;position:relative}
+@media(max-width:640px){.modal-wrap{padding:28px 20px}}
+.modal-close{position:sticky;top:0;float:right;margin:-8px -8px 0 0;width:36px;height:36px;border-radius:50%;background:var(--c-surface);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--c-muted);transition:all var(--t);z-index:2}
+.modal-close:hover{background:var(--c-border);color:var(--c-dark)}
+.modal-wrap h2{font-size:1.6rem;margin-bottom:8px}
+.modal-wrap h3{font-size:1rem;margin:24px 0 8px;color:var(--c-dark)}
+.modal-wrap p,.modal-wrap li{font-size:.9rem;color:var(--c-muted);line-height:1.75}
+.modal-wrap ul{padding-left:18px;list-style:disc;margin-bottom:8px}
+.modal-wrap ul li{margin-bottom:4px}
+.modal-date{font-size:.78rem;color:var(--c-muted);margin-bottom:24px;display:block}
+
+/* Partner Schüco */
+.partner-schueco{border-color:rgba(200,0,29,.25);min-width:140px}
+.partner-schueco:hover{border-color:#c8001d;box-shadow:0 6px 24px rgba(200,0,29,.12)}
+.sch-logo-text{font-family:Arial,sans-serif;font-size:1.3rem;font-weight:900;font-style:italic;color:#c8001d;letter-spacing:-.03em}
+
+/* Scard buttons */
+.scard-btns{display:flex;gap:10px;flex-wrap:wrap}
+
 @media(max-width:640px){
   :root{--nav-h:60px}
   .nav-logo img{height:40px;max-width:170px}
@@ -581,12 +616,13 @@ textarea{resize:vertical;min-height:130px}
 
   .nav-links{
     position:fixed;top:var(--nav-h);left:0;right:0;
-    background:rgba(25,25,25,.98);backdrop-filter:blur(16px);
+    background:rgba(22,22,22,.98);backdrop-filter:blur(16px);
     flex-direction:column;align-items:stretch;
-    padding:16px 20px 24px;gap:2px;
-    transform:translateY(-120%);opacity:0;pointer-events:none;
+    padding:12px 16px 24px;gap:2px;
+    max-height:calc(100dvh - var(--nav-h));overflow-y:auto;
+    transform:translateY(-110%);opacity:0;pointer-events:none;
     transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .3s;
-    box-shadow:0 16px 40px rgba(0,0,0,.5);z-index:999;
+    box-shadow:0 16px 40px rgba(0,0,0,.5);z-index:1001;
   }
   .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}
   .nav-link,.nav-cta-link{padding:13px 18px;font-size:.95rem;border-radius:var(--r-sm)}
@@ -666,7 +702,7 @@ textarea{resize:vertical;min-height:130px}
         Oltre 30 anni di esperienza
       </span>
     </div>
-    <h1>Qualità senza<br/>compromessi,<br/>per ogni apertura.</h1>
+    <h1>Finestre e porte<br/>di eccellenza<br/>a Roma da 30 anni.</h1>
     <p class="hero-sub">Infissi, porte e finestre di altissima qualità.<br/>Showroom di 900 m² a Ciampino, Roma.</p>
     <div class="hero-ctas">
       <a href="#servizi"  class="btn btn-primary btn-lg">Scopri i prodotti</a>
@@ -737,7 +773,10 @@ textarea{resize:vertical;min-height:130px}
         <div class="scard-body">
           <h3>Serramenti</h3>
           <p>Infissi in alluminio a taglio termico, PVC, acciaio e legno. Facciate continue vetro-alluminio, serre bioclimatiche, verande e tapparelle avvolgibili in metallo.</p>
-          <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
+          <div class="scard-btns">
+            <a href="serramenti.html" class="btn btn-sm btn-primary">Scopri di più →</a>
+            <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
+          </div>
         </div>
       </article>
 
@@ -750,7 +789,10 @@ textarea{resize:vertical;min-height:130px}
         <div class="scard-body">
           <h3>Ferro e vetro</h3>
           <p>Grate, persiane, cancelli e opere in ferro su misura. Pensiline in alluminio e vetro, arredo urbano, zanzariere e tende tecniche di alta qualità.</p>
-          <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
+          <div class="scard-btns">
+            <a href="ferro-vetro.html" class="btn btn-sm btn-primary">Scopri di più →</a>
+            <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
+          </div>
         </div>
       </article>
 
@@ -763,7 +805,10 @@ textarea{resize:vertical;min-height:130px}
         <div class="scard-body">
           <h3>Energia pulita</h3>
           <p>Progettazione e realizzazione di impianti fotovoltaici e solari-termici. Soluzioni integrate per il risparmio energetico e la sostenibilità.</p>
-          <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
+          <div class="scard-btns">
+            <a href="energia-pulita.html" class="btn btn-sm btn-primary">Scopri di più →</a>
+            <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
+          </div>
         </div>
       </article>
 
@@ -942,7 +987,7 @@ textarea{resize:vertical;min-height:130px}
       <p>Lavoriamo esclusivamente con i leader mondiali del settore degli infissi, della ferramenta e dei sistemi energetici.</p>
     </div>
     <div class="partner-grid fi">
-      <div class="partner-pill partner-featured"><span>schüco</span></div>
+      <div class="partner-pill partner-schueco"><span class="sch-logo-text">schüco</span></div>
       <div class="partner-pill"><span>Ponzio</span></div>
       <div class="partner-pill"><span>Kikau</span></div>
       <div class="partner-pill"><span>Cerbone</span></div>
@@ -1101,14 +1146,74 @@ textarea{resize:vertical;min-height:130px}
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2024 Sunser — P.IVA 14631881003</span>
+      <span>© 2025 Sunser — P.IVA 14631881003</span>
       <div class="footer-links">
-        <a href="#">Privacy Policy</a>
-        <a href="#">Cookie Policy</a>
+        <button onclick="openModal('privacyModal')" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font:inherit;font-size:.8rem;transition:color .3s" onmouseover="this.style.color='rgba(255,255,255,.7)'" onmouseout="this.style.color='rgba(255,255,255,.3)'">Privacy Policy</button>
+        <button onclick="openModal('cookieModal')" style="background:none;border:none;cursor:pointer;color:rgba(255,255,255,.3);font:inherit;font-size:.8rem;transition:color .3s" onmouseover="this.style.color='rgba(255,255,255,.7)'" onmouseout="this.style.color='rgba(255,255,255,.3)'">Cookie Policy</button>
       </div>
     </div>
   </div>
 </footer>
+
+<!-- FAB -->
+<a href="#contatti" class="fab" id="fab" aria-label="Contattaci">
+  <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+  <span class="fab-lbl">Contattaci</span>
+</a>
+
+<!-- Privacy Modal -->
+<dialog class="site-modal" id="privacyModal" aria-labelledby="pm-title">
+  <div class="modal-wrap">
+    <button class="modal-close" onclick="closeModal('privacyModal')" aria-label="Chiudi">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <h2 id="pm-title">Privacy Policy</h2>
+    <span class="modal-date">Aggiornata al 1° gennaio 2025</span>
+    <h3>1. Titolare del trattamento</h3>
+    <p>Sunser S.r.l., Via Enzo Ferrari 91, 00043 Ciampino (Roma) — P.IVA 14631881003 — info@sunser.it</p>
+    <h3>2. Dati raccolti</h3>
+    <p>Raccogliamo esclusivamente i dati che l'utente fornisce volontariamente tramite il modulo di contatto: nome, cognome, indirizzo email e numero di telefono (facoltativo). Non raccogliamo dati di navigazione né utilizziamo cookie di profilazione.</p>
+    <h3>3. Finalità e base giuridica</h3>
+    <ul>
+      <li><strong>Risposta alle richieste di contatto</strong> — art. 6(1)(b) GDPR (esecuzione di misure precontrattuali)</li>
+      <li><strong>Adempimento di obblighi legali</strong> — art. 6(1)(c) GDPR</li>
+    </ul>
+    <h3>4. Periodo di conservazione</h3>
+    <p>I dati sono conservati per un massimo di 12 mesi dalla ricezione della richiesta, salvo diversi obblighi di legge.</p>
+    <h3>5. Destinatari</h3>
+    <p>I dati non sono ceduti a terzi. Potrebbero essere accessibili ai fornitori di servizi tecnici (hosting, email) che operano come responsabili del trattamento ai sensi dell'art. 28 GDPR.</p>
+    <h3>6. Trasferimento extra-UE</h3>
+    <p>I dati non vengono trasferiti al di fuori dello Spazio Economico Europeo.</p>
+    <h3>7. I tuoi diritti (artt. 15–22 GDPR)</h3>
+    <p>Hai diritto di accesso, rettifica, cancellazione, limitazione del trattamento, portabilità e opposizione. Puoi esercitarli scrivendo a info@sunser.it. Hai inoltre il diritto di proporre reclamo al Garante per la protezione dei dati personali (www.garanteprivacy.it).</p>
+  </div>
+</dialog>
+
+<!-- Cookie Modal -->
+<dialog class="site-modal" id="cookieModal" aria-labelledby="cm-title">
+  <div class="modal-wrap">
+    <button class="modal-close" onclick="closeModal('cookieModal')" aria-label="Chiudi">
+      <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12"/></svg>
+    </button>
+    <h2 id="cm-title">Cookie Policy</h2>
+    <span class="modal-date">Aggiornata al 1° gennaio 2025</span>
+    <h3>Cookie tecnici</h3>
+    <p>Questo sito utilizza esclusivamente cookie tecnici strettamente necessari al corretto funzionamento della navigazione. Non usiamo cookie di profilazione, marketing o analitici di terze parti.</p>
+    <h3>Cosa sono i cookie</h3>
+    <p>I cookie sono piccoli file di testo salvati nel browser dell'utente. Quelli tecnici sono necessari per ricordare le preferenze di sessione (es. consenso al modulo di contatto) e non richiedono consenso ai sensi del Considerando 30 GDPR e delle Linee Guida Cookie del Garante.</p>
+    <h3>Cookie di terze parti</h3>
+    <p>Questo sito non carica script di terze parti che impostano cookie (niente Google Analytics, Facebook Pixel, o simili). Il font Inter viene caricato da Google Fonts tramite connessione HTTPS; Google potrebbe registrare l'IP per finalità di sicurezza come indicato nella propria privacy policy.</p>
+    <h3>Gestione dei cookie nel browser</h3>
+    <p>Puoi gestire o eliminare i cookie dal tuo browser in qualsiasi momento:</p>
+    <ul>
+      <li>Chrome: Impostazioni → Privacy e sicurezza → Cookie</li>
+      <li>Firefox: Preferenze → Privacy e sicurezza → Cookie</li>
+      <li>Safari: Preferenze → Privacy → Gestisci dati siti web</li>
+      <li>Edge: Impostazioni → Cookie e autorizzazioni sito</li>
+    </ul>
+    <p style="margin-top:12px">Per ulteriori informazioni scrivi a info@sunser.it.</p>
+  </div>
+</dialog>
 
 <script>
 /* ── Navbar ── */
@@ -1121,7 +1226,16 @@ function handleScroll(){
   let cur = '';
   secs.forEach(s => { if(window.scrollY >= s.offsetTop - 110) cur = s.id; });
   allLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+cur));
+  const hero = document.querySelector('.hero');
+  const fab = document.getElementById('fab');
+  if(hero && fab) fab.classList.toggle('show', hero.getBoundingClientRect().bottom < 80);
 }
+
+function openModal(id){ document.getElementById(id)?.showModal(); }
+function closeModal(id){ document.getElementById(id)?.close(); }
+document.querySelectorAll('dialog.site-modal').forEach(d => {
+  d.addEventListener('click', e => { if(e.target === d) d.close(); });
+});
 window.addEventListener('scroll', handleScroll, {passive:true});
 handleScroll();
 
@@ -1131,10 +1245,12 @@ const navLinks = document.getElementById('navLinks');
 burger.addEventListener('click', () => {
   const open = navLinks.classList.toggle('open');
   burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
 });
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
   navLinks.classList.remove('open');
   burger.setAttribute('aria-expanded','false');
+  document.body.style.overflow = '';
 }));
 document.addEventListener('click', e => {
   if(!nav.contains(e.target)){ navLinks.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }

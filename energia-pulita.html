@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Energia pulita — Sunser Ciampino Roma. Impianti fotovoltaici, accumulo, solare termico, colonnine di ricarica e incentivi fiscali Ecobonus 2025."/>
+<title>Energia Pulita | Sunser — Infissi Roma Ciampino</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;background:#fff;line-height:1.65;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+address{font-style:normal}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+:root{
+  --c-surface:#f8f7f5;--c-dark:#1e1e1e;--c-nav:#252525;
+  --c-accent:#7ab51d;--c-accent2:#5f8e12;--c-text:#1a1a1a;
+  --c-muted:#6b7280;--c-border:#e8e7e5;--c-white:#ffffff;
+  --nav-h:72px;--r-sm:6px;--r-md:14px;--r-lg:24px;--r-xl:40px;
+  --sh-sm:0 1px 6px rgba(0,0,0,.07);--sh-md:0 6px 28px rgba(0,0,0,.10);
+  --sh-lg:0 20px 60px rgba(0,0,0,.15);--sh-xl:0 32px 80px rgba(0,0,0,.20);
+  --t:.3s ease;
+}
+.container{width:100%;max-width:1200px;margin:0 auto;padding:0 32px}
+.section{padding:96px 0}
+.bg-surface{background:var(--c-surface)}
+.bg-dark{background:#141414}
+.label{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--c-accent);margin-bottom:16px}
+.label::before{content:'';display:block;width:28px;height:2px;background:var(--c-accent);border-radius:2px}
+h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.1;letter-spacing:-.03em}
+h2{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:800;line-height:1.15;letter-spacing:-.025em}
+h3{font-size:1.2rem;font-weight:700;line-height:1.25}
+.section-header{text-align:center;max-width:600px;margin:0 auto 64px}
+.section-header h2{margin-bottom:14px}
+.section-header p{font-size:1.05rem;color:var(--c-muted);line-height:1.7}
+.fi{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
+.fi.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.fi{opacity:1;transform:none;transition:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 26px;border-radius:var(--r-xl);border:2px solid transparent;font-size:.925rem;font-weight:700;white-space:nowrap;transition:all var(--t);cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--c-accent);outline-offset:3px}
+.btn-primary{background:var(--c-accent);color:#fff;border-color:var(--c-accent)}
+.btn-primary:hover{background:var(--c-accent2);border-color:var(--c-accent2);transform:translateY(-2px);box-shadow:0 8px 28px rgba(122,181,29,.38)}
+.btn-lg{padding:16px 36px;font-size:1rem}
+.btn-full{width:100%}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:999px;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase}
+.chip-green{background:rgba(122,181,29,.15);color:var(--c-accent2);border:1px solid rgba(122,181,29,.3)}
+/* Nav */
+.nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);background:var(--c-nav);z-index:1000;transition:box-shadow var(--t)}
+.nav.scrolled{box-shadow:0 4px 30px rgba(0,0,0,.4)}
+.nav::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--c-accent) 40%,var(--c-accent) 60%,transparent);opacity:0;transition:opacity var(--t)}
+.nav.scrolled::after{opacity:1}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:1200px;margin:0 auto;padding:0 32px}
+.nav-links{display:flex;align-items:center;gap:2px}
+.nav-link{padding:8px 15px;border-radius:var(--r-sm);color:rgba(255,255,255,.75);font-size:.88rem;font-weight:500;transition:color var(--t),background var(--t)}
+.nav-link:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-cta-link{margin-left:12px;padding:9px 22px;border-radius:var(--r-xl);background:var(--c-accent);color:#fff;font-size:.88rem;font-weight:700;transition:all var(--t)}
+.nav-cta-link:hover{background:var(--c-accent2);transform:translateY(-1px);box-shadow:0 4px 18px rgba(122,181,29,.4)}
+.nav-burger{display:none;flex-direction:column;gap:5px;padding:8px;border-radius:var(--r-sm)}
+.nav-burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:all var(--t)}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* Hero */
+.svc-hero{position:relative;min-height:60vh;display:flex;align-items:flex-end;padding-top:var(--nav-h);overflow:hidden}
+.svc-hero-bg{position:absolute;inset:0}
+.svc-hero-bg img{width:100%;height:100%;object-fit:cover}
+.svc-hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.92) 0%,rgba(10,10,10,.5) 60%,rgba(10,10,10,.2) 100%)}
+.svc-hero-content{position:relative;z-index:2;padding:64px 32px 72px;width:100%;max-width:1200px;margin:0 auto}
+.back-link{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:.85rem;font-weight:500;margin-bottom:20px;transition:color var(--t)}
+.back-link:hover{color:#fff}
+.svc-hero-content h1{color:#fff;margin-bottom:16px}
+.svc-hero-content p{color:rgba(255,255,255,.72);font-size:1.1rem;max-width:600px;line-height:1.7}
+/* Stats band */
+.stats-band{background:var(--c-accent);padding:48px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center}
+.stat-item strong{display:block;font-size:2.4rem;font-weight:900;color:#fff;letter-spacing:-.04em;line-height:1}
+.stat-item span{font-size:.82rem;font-weight:600;color:rgba(255,255,255,.75);letter-spacing:.08em;text-transform:uppercase;margin-top:6px;display:block}
+/* Feature grid */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feat-card{background:var(--c-white);border:1.5px solid var(--c-border);border-radius:var(--r-lg);padding:32px 28px;box-shadow:var(--sh-sm);transition:all var(--t)}
+.feat-card:hover{transform:translateY(-6px);box-shadow:var(--sh-lg);border-color:var(--c-accent)}
+.feat-icon{width:48px;height:48px;border-radius:var(--r-md);background:rgba(122,181,29,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.feat-icon svg{color:var(--c-accent)}
+.feat-card h3{margin-bottom:10px}
+.feat-card p{color:var(--c-muted);font-size:.9rem;line-height:1.7}
+/* Product rows */
+.prod-list{display:flex;flex-direction:column;gap:48px}
+.prod-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.prod-row.rev{direction:rtl}
+.prod-row.rev>*{direction:ltr}
+.prod-img{border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--sh-xl)}
+.prod-img img{width:100%;height:380px;object-fit:cover;transition:transform .6s ease}
+.prod-img:hover img{transform:scale(1.04)}
+.prod-text h3{font-size:1.5rem;margin-bottom:12px}
+.prod-text>p{color:var(--c-muted);line-height:1.75;margin-bottom:16px}
+.spec-list{display:flex;flex-direction:column;gap:10px;margin:20px 0}
+.spec-list li{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--c-text)}
+.spec-list li::before{content:'';display:block;width:8px;height:8px;border-radius:50%;background:var(--c-accent);flex-shrink:0}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag{display:inline-block;padding:4px 12px;border-radius:999px;background:rgba(122,181,29,.1);color:var(--c-accent2);font-size:.75rem;font-weight:700;border:1px solid rgba(122,181,29,.25)}
+/* Incentivi */
+.incentivi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.incentivo-card{background:var(--c-white);border-radius:var(--r-lg);padding:36px 28px;box-shadow:var(--sh-md);border-top:4px solid var(--c-accent);transition:all var(--t)}
+.incentivo-card:hover{transform:translateY(-5px);box-shadow:var(--sh-lg)}
+.incentivo-pct{font-size:3rem;font-weight:900;color:var(--c-accent);line-height:1;margin-bottom:8px}
+.incentivo-card h3{margin-bottom:10px;font-size:1.1rem}
+.incentivo-card p{font-size:.88rem;color:var(--c-muted);line-height:1.7}
+.incentivo-note{font-size:.78rem;color:var(--c-muted);margin-top:12px;padding-top:12px;border-top:1px solid var(--c-border)}
+/* CTA band */
+.cta-band{background:linear-gradient(135deg,#1a1a1a,#252525);padding:80px 0;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;top:-150px;left:50%;transform:translateX(-50%);width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(122,181,29,.12) 0%,transparent 70%);pointer-events:none}
+.cta-band h2{color:#fff;margin-bottom:16px}
+.cta-band p{color:rgba(255,255,255,.65);font-size:1.05rem;max-width:500px;margin:0 auto 36px}
+.cta-band-btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:80px;align-items:start}
+.contact-info h2{margin-bottom:16px}
+.contact-info>p{color:var(--c-muted);margin-bottom:40px;line-height:1.7}
+.cinfo-list{display:flex;flex-direction:column;gap:24px}
+.cinfo-item{display:flex;gap:16px;align-items:flex-start}
+.cinfo-icon{width:44px;height:44px;flex-shrink:0;border-radius:var(--r-sm);background:rgba(122,181,29,.1);display:flex;align-items:center;justify-content:center}
+.cinfo-icon svg{color:var(--c-accent)}
+.cinfo-item strong{display:block;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--c-muted);margin-bottom:3px}
+.cinfo-item span,.cinfo-item a{font-size:.95rem;color:var(--c-text);transition:color var(--t)}
+.cinfo-item a:hover{color:var(--c-accent)}
+.form-box{background:var(--c-white);border:1px solid var(--c-border);border-radius:var(--r-lg);padding:44px;box-shadow:var(--sh-md)}
+.form-box h3{font-size:1.4rem;margin-bottom:6px}
+.form-sub{font-size:.9rem;color:var(--c-muted);margin-bottom:28px}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:20px}
+.fg label{font-size:.82rem;font-weight:700;color:var(--c-dark);letter-spacing:.03em}
+.fg-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+input,textarea{width:100%;padding:13px 16px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-family:inherit;font-size:.95rem;color:var(--c-text);background:var(--c-surface);transition:border-color var(--t),box-shadow var(--t),background var(--t);min-height:48px}
+input:focus,textarea:focus{outline:none;border-color:var(--c-accent);background:#fff;box-shadow:0 0 0 3.5px rgba(122,181,29,.15)}
+input.err,textarea.err{border-color:#e53e3e}
+textarea{resize:vertical;min-height:120px}
+.ferr{font-size:.78rem;color:#e53e3e;min-height:18px}
+.req{color:var(--c-accent)}
+.cb-label{display:flex;align-items:flex-start;gap:10px;font-size:.85rem;color:var(--c-muted);cursor:pointer}
+.cb-label input[type=checkbox]{width:18px;height:18px;min-width:18px;margin-top:1px;accent-color:var(--c-accent)}
+.hidden{display:none}
+.btn-spin{animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.form-ok{display:flex;align-items:center;gap:10px;padding:14px 18px;background:rgba(122,181,29,.1);border:1px solid rgba(122,181,29,.3);border-radius:var(--r-sm);color:var(--c-accent2);font-size:.9rem;font-weight:600;margin-top:12px}
+/* Footer */
+.footer{background:#141414;color:rgba(255,255,255,.6);padding:64px 0 0}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:48px;padding-bottom:48px;border-bottom:1px solid rgba(255,255,255,.07)}
+.footer-brand img{height:48px;width:auto;margin-bottom:16px}
+.footer-brand p{font-size:.875rem;line-height:1.75;max-width:260px}
+.footer-col h5{color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:18px}
+.footer-col ul{display:flex;flex-direction:column;gap:10px}
+.footer-col a{font-size:.88rem;color:rgba(255,255,255,.5);transition:color var(--t)}
+.footer-col a:hover{color:var(--c-accent)}
+.footer-addr{font-size:.88rem;line-height:1.75}
+.footer-addr a{display:block;margin-top:8px;font-size:.88rem;color:rgba(255,255,255,.5);transition:color var(--t)}
+.footer-addr a:hover{color:var(--c-accent)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding:20px 0;font-size:.8rem;color:rgba(255,255,255,.3);flex-wrap:wrap;gap:12px}
+.footer-links{display:flex;gap:20px}
+.footer-bottom a{color:rgba(255,255,255,.3);transition:color var(--t)}
+.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+/* Responsive */
+@media(max-width:1024px){.feat-grid{grid-template-columns:1fr 1fr}.incentivi-grid{grid-template-columns:1fr 1fr}.stats-grid{grid-template-columns:1fr 1fr;gap:24px}.prod-row{grid-template-columns:1fr;gap:36px}.prod-row.rev{direction:ltr}.prod-img img{height:280px}.contact-grid{grid-template-columns:1fr;gap:48px}.footer-grid{grid-template-columns:1fr 1fr;gap:36px}}
+@media(max-width:640px){
+  :root{--nav-h:60px}
+  .container{padding:0 20px}
+  .section{padding:64px 0}
+  .feat-grid{grid-template-columns:1fr}
+  .incentivi-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .fg-row{grid-template-columns:1fr}
+  .form-box{padding:24px 20px}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .cta-band-btns{flex-direction:column;align-items:center}
+  .nav-links{position:fixed;top:var(--nav-h);left:0;right:0;background:rgba(22,22,22,.98);backdrop-filter:blur(16px);flex-direction:column;align-items:stretch;padding:12px 16px 24px;gap:2px;max-height:calc(100dvh - var(--nav-h));overflow-y:auto;transform:translateY(-110%);opacity:0;pointer-events:none;transition:transform .35s cubic-bezier(.16,1,.3,1),opacity .3s;box-shadow:0 16px 40px rgba(0,0,0,.5);z-index:1001}
+  .nav-links.open{transform:translateY(0);opacity:1;pointer-events:auto}
+  .nav-link{padding:14px 16px;font-size:.95rem;border-radius:var(--r-sm);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-cta-link{margin:10px 0 0;padding:14px 16px;text-align:center;border-radius:var(--r-xl)}
+  .nav-burger{display:flex}
+  .svc-hero-content{padding-left:20px;padding-right:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" aria-label="Sunser — torna alla home">
+      <img src="logo.svg" alt="Sunser" style="height:48px;width:auto;object-fit:contain"/>
+    </a>
+    <button class="nav-burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav aria-label="Navigazione principale">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#chi-siamo"  class="nav-link">Chi siamo</a></li>
+        <li><a href="index.html#servizi"    class="nav-link">Servizi</a></li>
+        <li><a href="index.html#schueco"    class="nav-link">Schüco</a></li>
+        <li><a href="index.html#ecobonus"   class="nav-link">Ecobonus</a></li>
+        <li><a href="index.html#assistenza" class="nav-link">Assistenza</a></li>
+        <li><a href="index.html#partner"    class="nav-link">Partner</a></li>
+        <li><a href="#contatti"             class="nav-cta-link">Contattaci</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="svc-hero">
+  <div class="svc-hero-bg">
+    <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=85&auto=format&fit=crop" alt="Pannelli solari fotovoltaici sul tetto" fetchpriority="high"/>
+    <div class="svc-hero-overlay"></div>
+  </div>
+  <div class="svc-hero-content">
+    <a href="index.html#servizi" class="back-link">
+      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+      Tutti i servizi
+    </a>
+    <span class="chip chip-green" style="margin-bottom:16px;display:inline-flex">03 — Energia Pulita</span>
+    <h1>Energia solare<br/>per casa e azienda</h1>
+    <p>Impianti fotovoltaici, sistemi di accumulo e solare termico con installazione certificata e assistenza nel recupero degli incentivi fiscali fino al 110%.</p>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item fi">
+        <strong>30+</strong>
+        <span>Anni di esperienza</span>
+      </div>
+      <div class="stat-item fi" style="transition-delay:.07s">
+        <strong>500+</strong>
+        <span>Impianti installati</span>
+      </div>
+      <div class="stat-item fi" style="transition-delay:.14s">
+        <strong>-70%</strong>
+        <span>Risparmio in bolletta</span>
+      </div>
+      <div class="stat-item fi" style="transition-delay:.21s">
+        <strong>25 anni</strong>
+        <span>Garanzia pannelli</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-surface">
+  <div class="container">
+    <div class="section-header fi">
+      <span class="label">Perché sceglierci</span>
+      <h2>Un unico interlocutore,<br/>dalla progettazione all'incentivo</h2>
+      <p>Seguiamo ogni fase: sopralluogo, progetto, installazione certificata e pratiche per gli incentivi fiscali. Zero burocrazia per te.</p>
+    </div>
+    <div class="feat-grid">
+      <div class="feat-card fi">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        </div>
+        <h3>Progettazione certificata</h3>
+        <p>I nostri tecnici effettuano un sopralluogo gratuito e redigono un progetto esecutivo con simulazione dei risparmi energetici e del payback reale.</p>
+      </div>
+      <div class="feat-card fi" style="transition-delay:.08s">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        </div>
+        <h3>Installatori accreditati</h3>
+        <p>Il nostro team è formato e certificato secondo le normative CEI EN 50618 e IEC 62446. Garanzia di impianto e assicurazione responsabilità civile incluse.</p>
+      </div>
+      <div class="feat-card fi" style="transition-delay:.16s">
+        <div class="feat-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+        </div>
+        <h3>Pratiche incentivi incluse</h3>
+        <p>Gestiamo noi tutta la burocrazia: Ecobonus, Conto Energia, Scambio sul Posto, detrazione IRPEF al 50% e pratiche GSE. Tu pensi solo al risparmio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-header fi">
+      <span class="label">I nostri impianti</span>
+      <h2>Soluzioni complete per ogni esigenza</h2>
+    </div>
+    <div class="prod-list">
+
+      <div class="prod-row fi">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&q=80&auto=format&fit=crop" alt="Impianto fotovoltaico residenziale su tetto" loading="lazy"/>
+        </div>
+        <div class="prod-text">
+          <span class="label">01</span>
+          <h3>Fotovoltaico residenziale</h3>
+          <p>Impianti da 3 kWp a 20 kWp per abitazioni mono e bifamiliari. Pannelli monocristallini di ultima generazione con efficienza fino al 22,5%. Monitoraggio in tempo reale via app.</p>
+          <ul class="spec-list">
+            <li>Pannelli monocristallini HJT ad alta efficienza</li>
+            <li>Inverter string e micro-inverter per tetti complessi</li>
+            <li>Monitoraggio produzione in tempo reale (app mobile)</li>
+            <li>Schemi elettrici e pratiche ENEA incluse</li>
+            <li>Garanzia prodotto 25 anni, garanzia installazione 5 anni</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">3–20 kWp</span>
+            <span class="tag">Efficienza 22.5%</span>
+            <span class="tag">Monitoraggio app</span>
+            <span class="tag">Garanzia 25 anni</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-row rev fi">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1497440001374-f26997328c1b?w=800&q=80&auto=format&fit=crop" alt="Sistema di accumulo batterie per fotovoltaico" loading="lazy"/>
+        </div>
+        <div class="prod-text">
+          <span class="label">02</span>
+          <h3>Sistemi di accumulo</h3>
+          <p>Batterie di accumulo agli ioni di litio per massimizzare l'autoconsumo. Abbinabili a impianti esistenti o nuovi, con gestione intelligente dei carichi per abbattere la bolletta fino al 90%.</p>
+          <ul class="spec-list">
+            <li>Batterie LFP (litio ferro fosfato) — lunga durata e sicurezza</li>
+            <li>Capacità da 5 kWh a 30 kWh modulabili</li>
+            <li>Compatibili con impianti fotovoltaici esistenti</li>
+            <li>Gestione intelligente dei picchi di consumo</li>
+            <li>Funzione UPS per continuità in caso di blackout</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Litio LFP</span>
+            <span class="tag">5–30 kWh</span>
+            <span class="tag">Autoconsumo 90%</span>
+            <span class="tag">UPS integrato</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-row fi">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=800&q=80&auto=format&fit=crop" alt="Pannelli solari termici per acqua calda sanitaria" loading="lazy"/>
+        </div>
+        <div class="prod-text">
+          <span class="label">03</span>
+          <h3>Solare termico</h3>
+          <p>Impianti solari termici per acqua calda sanitaria e integrazione riscaldamento. Copertura fino all'80% del fabbisogno annuo di ACS. Ideali abbinati a pompe di calore per massimizzare la resa.</p>
+          <ul class="spec-list">
+            <li>Collettori piani e sottovuoto ad alta efficienza</li>
+            <li>Bollitore bivalente inox da 150 a 500 litri</li>
+            <li>Copertura 70–80% ACS annua</li>
+            <li>Integrazione con impianti di riscaldamento esistenti</li>
+            <li>Certificazione Solar Keymark e Solar Thermal</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">Collettori sottovuoto</span>
+            <span class="tag">ACS 80%</span>
+            <span class="tag">Solar Keymark</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-row rev fi">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1593941707882-a5bba53774b0?w=800&q=80&auto=format&fit=crop" alt="Colonnina di ricarica auto elettrica wallbox" loading="lazy"/>
+        </div>
+        <div class="prod-text">
+          <span class="label">04</span>
+          <h3>Colonnine di ricarica EV</h3>
+          <p>Wallbox e colonnine di ricarica per auto elettriche, integrate con l'impianto fotovoltaico per ricaricare l'auto con energia solare gratuita. Installazione in garage, posti auto privati e condominiali.</p>
+          <ul class="spec-list">
+            <li>Wallbox monofase e trifase da 7,4 a 22 kW</li>
+            <li>Integrazione con fotovoltaico per ricarica solare</li>
+            <li>App per monitoraggio e programmazione ricarica</li>
+            <li>Installazioni condominiali con gestione quote</li>
+            <li>Incentivo Ecobonus 50% per privati</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">7,4–22 kW</span>
+            <span class="tag">Ricarica solare</span>
+            <span class="tag">Smart charging</span>
+            <span class="tag">Ecobonus 50%</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="prod-row fi">
+        <div class="prod-img">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80&auto=format&fit=crop" alt="Pompa di calore aria acqua per riscaldamento" loading="lazy"/>
+        </div>
+        <div class="prod-text">
+          <span class="label">05</span>
+          <h3>Pompe di calore</h3>
+          <p>Pompe di calore aria-acqua e aria-aria per riscaldamento, raffrescamento e ACS. Fino a 5 kWh di calore prodotto per ogni kWh elettrico consumato. Abbinabili con fotovoltaico e accumulo.</p>
+          <ul class="spec-list">
+            <li>COP fino a 5.0 (classe energetica A+++)</li>
+            <li>Riscaldamento, raffrescamento e ACS da un unico apparato</li>
+            <li>Compatibili con radiatori esistenti e pavimento radiante</li>
+            <li>Installazione in sostituzione di caldaia a gas</li>
+            <li>Detrazione 65% con Ecobonus, 110% con Superbonus (se applicabile)</li>
+          </ul>
+          <div class="tag-row">
+            <span class="tag">COP 5.0</span>
+            <span class="tag">A+++</span>
+            <span class="tag">Aria-Acqua</span>
+            <span class="tag">Ecobonus 65%</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section bg-surface">
+  <div class="container">
+    <div class="section-header fi">
+      <span class="label">Incentivi 2025</span>
+      <h2>Recupera fino al 110%<br/>della spesa sostenuta</h2>
+      <p>Gestiamo noi tutte le pratiche per farti accedere agli incentivi fiscali vigenti. Ecco le principali agevolazioni disponibili.</p>
+    </div>
+    <div class="incentivi-grid">
+      <div class="incentivo-card fi">
+        <div class="incentivo-pct">50%</div>
+        <h3>Ecobonus Fotovoltaico</h3>
+        <p>Detrazione IRPEF del 50% per l'installazione di impianti fotovoltaici su abitazioni, ripartita in 10 anni. Valida anche per i sistemi di accumulo abbinati.</p>
+        <p class="incentivo-note">Cumulabile con Conto Energia e Scambio sul Posto</p>
+      </div>
+      <div class="incentivo-card fi" style="transition-delay:.08s">
+        <div class="incentivo-pct">65%</div>
+        <h3>Ecobonus Efficienza</h3>
+        <p>Detrazione IRPEF/IRES del 65% per pompe di calore, solare termico e interventi che migliorano la prestazione energetica dell'edificio oltre una soglia minima.</p>
+        <p class="incentivo-note">Richiede asseverazione di un tecnico abilitato</p>
+      </div>
+      <div class="incentivo-card fi" style="transition-delay:.16s">
+        <div class="incentivo-pct">50%</div>
+        <h3>Ecobonus Wallbox</h3>
+        <p>Detrazione del 50% per l'installazione di colonnine di ricarica per veicoli elettrici nelle abitazioni private, fino a un massimo di spesa di 3.000 €.</p>
+        <p class="incentivo-note">Applicabile anche in condominio con delibera assembleare</p>
+      </div>
+      <div class="incentivo-card fi" style="transition-delay:.08s">
+        <div class="incentivo-pct" style="font-size:2rem">GSE</div>
+        <h3>Scambio sul Posto</h3>
+        <p>Meccanismo che ti permette di cedere alla rete l'energia prodotta in eccesso e di recuperarla successivamente, riducendo ulteriormente il costo in bolletta.</p>
+        <p class="incentivo-note">Gestito da Gestore dei Servizi Energetici (GSE)</p>
+      </div>
+      <div class="incentivo-card fi" style="transition-delay:.16s">
+        <div class="incentivo-pct" style="font-size:2rem">CER</div>
+        <h3>Comunità Energetiche</h3>
+        <p>Se sei in un condominio o zona residenziale, puoi costituire una Comunità Energetica Rinnovabile per condividere l'energia prodotta e ricevere incentivi aggiuntivi dal GSE.</p>
+        <p class="incentivo-note">Incentivo tariffario + contributo in conto capitale</p>
+      </div>
+      <div class="incentivo-card fi" style="transition-delay:.24s">
+        <div class="incentivo-pct" style="font-size:2rem">IVA</div>
+        <h3>IVA agevolata al 10%</h3>
+        <p>Gli interventi di installazione di impianti fotovoltaici e sistemi di accumulo su edifici residenziali beneficiano dell'IVA al 10% anziché al 22%.</p>
+        <p class="incentivo-note">Verifichiamo la tua situazione specifica in fase di preventivo</p>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--c-muted);font-size:.82rem;margin-top:32px;max-width:600px;margin-left:auto;margin-right:auto">* Le agevolazioni fiscali sono soggette a variazioni normative. Verifichiamo insieme la tua situazione specifica prima di ogni intervento.</p>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container" style="position:relative;z-index:1">
+    <h2>Calcola il tuo risparmio</h2>
+    <p>Sopralluogo gratuito e simulazione del payback: scopri in quanti anni l'impianto si ripaga e quanto risparmieresti ogni anno.</p>
+    <div class="cta-band-btns">
+      <a href="#contatti" class="btn btn-primary btn-lg">Richiedi sopralluogo gratuito</a>
+      <a href="tel:+390672315231" class="btn btn-lg" style="background:rgba(255,255,255,.1);color:#fff;border:2px solid rgba(255,255,255,.3)">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+        +39 06 7231523
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contatti">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info fi">
+        <span class="label">Contatti</span>
+        <h2>Parliamo del<br/>tuo impianto</h2>
+        <p>Un tecnico specializzato ti risponderà entro 24 ore per fissare un sopralluogo gratuito e preparare una simulazione personalizzata.</p>
+        <ul class="cinfo-list">
+          <li class="cinfo-item">
+            <div class="cinfo-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+            <div><strong>Indirizzo</strong><span>Via Enzo Ferrari 91, 00043 Ciampino (Roma)</span></div>
+          </li>
+          <li class="cinfo-item">
+            <div class="cinfo-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></div>
+            <div><strong>Telefono</strong><a href="tel:+390672315231">+39 06 7231523</a></div>
+          </li>
+          <li class="cinfo-item">
+            <div class="cinfo-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></div>
+            <div><strong>Email</strong><a href="mailto:info@sunser.it">info@sunser.it</a></div>
+          </li>
+        </ul>
+      </div>
+      <div class="fi" style="transition-delay:.15s">
+        <div class="form-box">
+          <h3>Richiedi un preventivo</h3>
+          <p class="form-sub">Dicci dove sei e che tipo di impianto ti interessa — risponderemo in 24 ore.</p>
+          <form id="cForm" novalidate>
+            <div class="fg">
+              <label for="fn">Nome e Cognome <span class="req">*</span></label>
+              <input type="text" id="fn" placeholder="Mario Rossi" required autocomplete="name" aria-describedby="fn-e"/>
+              <span class="ferr" id="fn-e" role="alert"></span>
+            </div>
+            <div class="fg-row">
+              <div class="fg">
+                <label for="fe">Email <span class="req">*</span></label>
+                <input type="email" id="fe" placeholder="mario@example.com" required autocomplete="email" aria-describedby="fe-e"/>
+                <span class="ferr" id="fe-e" role="alert"></span>
+              </div>
+              <div class="fg">
+                <label for="ft">Telefono</label>
+                <input type="tel" id="ft" placeholder="+39 …" autocomplete="tel"/>
+              </div>
+            </div>
+            <div class="fg">
+              <label for="fs">Tipo di impianto</label>
+              <select id="fs" style="width:100%;padding:13px 16px;border:1.5px solid var(--c-border);border-radius:var(--r-sm);font-family:inherit;font-size:.95rem;color:var(--c-text);background:var(--c-surface);min-height:48px;cursor:pointer">
+                <option value="">Seleziona…</option>
+                <option>Fotovoltaico residenziale</option>
+                <option>Fotovoltaico + accumulo</option>
+                <option>Solare termico</option>
+                <option>Pompa di calore</option>
+                <option>Colonnina di ricarica EV</option>
+                <option>Impianto combinato</option>
+              </select>
+            </div>
+            <div class="fg">
+              <label for="fm">Messaggio <span class="req">*</span></label>
+              <textarea id="fm" rows="4" placeholder="Es.: Casa singola a Ciampino, tetto in tegole 40 mq. Consumo annuo ~4.500 kWh. Interessato a fotovoltaico + accumulo." required aria-describedby="fm-e"></textarea>
+              <span class="ferr" id="fm-e" role="alert"></span>
+            </div>
+            <div class="fg">
+              <label class="cb-label">
+                <input type="checkbox" id="fp" required aria-describedby="fp-e"/>
+                <span>Ho letto e accetto la <a href="index.html" style="color:#7ab51d;text-decoration:underline">Privacy Policy</a> <span class="req">*</span></span>
+              </label>
+              <span class="ferr" id="fp-e" role="alert"></span>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" id="sbtn">
+              <span id="sbtn-txt">Invia richiesta</span>
+              <svg id="sbtn-spin" class="btn-spin hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" opacity=".25"/><path d="M12 2a10 10 0 0110 10"/></svg>
+            </button>
+            <div id="fok" class="form-ok hidden">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              Richiesta inviata! Un tecnico ti contatterà entro 24 ore.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logo.svg" alt="Sunser" loading="lazy"/>
+        <p>Infissi, porte e finestre di qualità superiore. Schüco Premium Partner a Ciampino, Roma.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Servizi</h5>
+        <ul>
+          <li><a href="serramenti.html">Serramenti</a></li>
+          <li><a href="ferro-vetro.html">Ferro e vetro</a></li>
+          <li><a href="energia-pulita.html">Energia pulita</a></li>
+          <li><a href="index.html#assistenza">Assistenza Schüco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Azienda</h5>
+        <ul>
+          <li><a href="index.html#chi-siamo">Chi siamo</a></li>
+          <li><a href="index.html#schueco">Schüco Partner</a></li>
+          <li><a href="index.html#ecobonus">Ecobonus</a></li>
+          <li><a href="#contatti">Contatti</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contatti</h5>
+        <address class="footer-addr">
+          Via Enzo Ferrari 91<br/>00043 Ciampino (Roma)
+          <a href="tel:+390672315231">+39 06 7231523</a>
+          <a href="mailto:info@sunser.it">info@sunser.it</a>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Sunser — P.IVA 14631881003</span>
+      <div class="footer-links">
+        <a href="index.html">Privacy Policy</a>
+        <a href="index.html">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20),{passive:true});
+const burger=document.getElementById('burger'),navLinks=document.getElementById('navLinks');
+burger.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');burger.setAttribute('aria-expanded',String(o));});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');burger.setAttribute('aria-expanded','false');}));
+document.addEventListener('click',e=>{if(!nav.contains(e.target)){navLinks.classList.remove('open');burger.setAttribute('aria-expanded','false');}});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(!t)return;e.preventDefault();const h=parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||72;window.scrollTo({top:t.getBoundingClientRect().top+window.scrollY-h,behavior:'smooth'});});});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+const form=document.getElementById('cForm'),sbtn=document.getElementById('sbtn'),stxt=document.getElementById('sbtn-txt'),spin=document.getElementById('sbtn-spin'),fok=document.getElementById('fok');
+function setE(id,msg){const f=document.getElementById(id),e=document.getElementById(id+'-e');if(!f||!e)return;f.classList.toggle('err',!!msg);e.textContent=msg||'';}
+function validate(){let ok=true;const n=document.getElementById('fn'),em=document.getElementById('fe'),msg=document.getElementById('fm'),pr=document.getElementById('fp');if(!n.value.trim()){setE('fn','Inserisci il tuo nome.');ok=false;}else setE('fn','');if(!em.value.trim()){setE('fe','Inserisci la tua email.');ok=false;}else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){setE('fe','Formato email non valido.');ok=false;}else setE('fe','');if(!msg.value.trim()){setE('fm','Scrivi un messaggio.');ok=false;}else setE('fm','');if(!pr.checked){setE('fp','Accetta la Privacy Policy.');ok=false;}else setE('fp','');return ok;}
+form.addEventListener('submit',async e=>{e.preventDefault();if(!validate()){const f=form.querySelector('.err');if(f)f.focus();return;}sbtn.disabled=true;stxt.textContent='Invio in corso…';spin.classList.remove('hidden');await new Promise(r=>setTimeout(r,1400));sbtn.classList.add('hidden');fok.classList.remove('hidden');form.reset();});
+</script>
+</body>
+</html>
