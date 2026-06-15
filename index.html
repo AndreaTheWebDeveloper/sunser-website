@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<meta name="description" content="Sunser — Infissi, porte e finestre di alta qualità a Ciampino Roma. Schüco Premium Partner e Service Partner con oltre 30 anni di esperienza. Showroom 900m². Ecobonus 50%."/>
-<title>Sunser — Schüco Premium Partner | Infissi Roma</title>
+<meta name="description" content="Sunser — Infissi e serramenti di alta qualità a Ciampino Roma. Oltre 30 anni di esperienza. Showroom 900m². Ecobonus 50%. Serramenti, ferro e vetro, fotovoltaico."/>
+<title>Sunser — Infissi e Serramenti Roma | Ciampino</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
@@ -159,6 +159,27 @@ h4{font-size:1rem;font-weight:700}
 .nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
 .nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Dropdown */
+.nav-has-dropdown{position:relative}
+.nav-dropdown-toggle{display:flex;align-items:center;gap:5px;padding:8px 15px;border-radius:var(--r-sm);color:rgba(255,255,255,.75);font-size:.88rem;font-weight:500;background:none;border:none;cursor:pointer;transition:color var(--t),background var(--t)}
+.nav-dropdown-toggle:hover,.nav-dropdown-toggle.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-dropdown-toggle svg{transition:transform var(--t);flex-shrink:0}
+.nav-has-dropdown:hover .nav-dropdown-toggle svg,.nav-dropdown-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-dropdown{
+  position:absolute;top:calc(100% + 8px);left:0;
+  background:#1e1e1e;border:1px solid rgba(255,255,255,.1);
+  border-radius:var(--r-md);padding:8px;min-width:190px;
+  box-shadow:0 16px 40px rgba(0,0,0,.4);
+  opacity:0;visibility:hidden;transform:translateY(-6px);
+  transition:opacity .2s ease,transform .2s ease,visibility .2s;
+  z-index:1100;
+}
+.nav-has-dropdown:hover .nav-dropdown,
+.nav-has-dropdown.open .nav-dropdown{opacity:1;visibility:visible;transform:none}
+.nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--r-sm);color:rgba(255,255,255,.75);font-size:.88rem;font-weight:500;transition:color var(--t),background var(--t);white-space:nowrap}
+.nav-dropdown-item:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-dropdown-item svg{color:var(--c-accent);flex-shrink:0}
 
 /* ===================================================================
    HERO
@@ -628,6 +649,12 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
   .nav-link,.nav-cta-link{padding:13px 18px;font-size:.95rem;border-radius:var(--r-sm)}
   .nav-cta-link{margin:8px 0 0;text-align:center;border-radius:var(--r-xl)}
   .nav-burger{display:flex}
+  /* mobile dropdown */
+  .nav-has-dropdown{position:static}
+  .nav-dropdown-toggle{width:100%;justify-content:space-between;padding:13px 18px;font-size:.95rem;border-radius:var(--r-sm);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:rgba(255,255,255,.06);border-radius:var(--r-sm);padding:4px 0 4px 12px;margin:2px 0 4px;display:none}
+  .nav-has-dropdown.open .nav-dropdown{display:block}
+  .nav-dropdown-item{padding:10px 14px;font-size:.9rem}
 
   .hero-content{margin-left:0;padding:36px 20px 80px}
   .hero-chips{gap:6px}
@@ -671,9 +698,28 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
     </button>
     <nav aria-label="Navigazione principale">
       <ul class="nav-links" id="navLinks">
-        <li><a href="#chi-siamo"  class="nav-link">Chi siamo</a></li>
-        <li><a href="#servizi"    class="nav-link">Servizi</a></li>
-        <li><a href="#schueco"    class="nav-link">Schüco</a></li>
+        <li><a href="#chi-siamo" class="nav-link">Chi siamo</a></li>
+        <li class="nav-has-dropdown" id="servDropdown">
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" id="servToggle">
+            Servizi
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="serramenti.html" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg>
+              Serramenti
+            </a></li>
+            <li><a href="ferro-vetro.html" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Ferro e Vetro
+            </a></li>
+            <li><a href="energia-pulita.html" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              Fotovoltaico
+            </a></li>
+          </ul>
+        </li>
+        <li><a href="#schueco" class="nav-link">Schüco</a></li>
         <li><a href="#ecobonus"   class="nav-link">Ecobonus</a></li>
         <li><a href="#assistenza" class="nav-link">Assistenza</a></li>
         <li><a href="#partner"    class="nav-link">Partner</a></li>
@@ -694,15 +740,15 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
   <div class="hero-content">
     <div class="hero-chips">
       <span class="chip chip-white">
-        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-        Schüco Premium Partner
-      </span>
-      <span class="chip chip-white">
         <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
         Oltre 30 anni di esperienza
       </span>
+      <span class="chip chip-white">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        Showroom 900m² · Ciampino Roma
+      </span>
     </div>
-    <h1>Finestre e porte<br/>di eccellenza<br/>a Roma da 30 anni.</h1>
+    <h1>Infissi e Serramenti<br/>a Roma —<br/>Efficienza e Velocità.</h1>
     <p class="hero-sub">Infissi, porte e finestre di altissima qualità.<br/>Showroom di 900 m² a Ciampino, Roma.</p>
     <div class="hero-ctas">
       <a href="#servizi"  class="btn btn-primary btn-lg">Scopri i prodotti</a>
@@ -823,12 +869,12 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
 
       <div class="fi">
         <div class="schueco-chips">
-          <span class="chip chip-green">Premium Partner</span>
-          <span class="chip chip-green">Service Partner</span>
+          <span class="chip chip-green">Rivenditore autorizzato</span>
+          <span class="chip chip-green">Installatori certificati</span>
         </div>
         <span class="label" style="color:#7ab51d">Schüco</span>
-        <h2 id="h-sch" style="color:#fff">Il massimo livello<br/>di partnership Schüco</h2>
-        <p style="color:rgba(255,255,255,.7);margin-bottom:12px">Sunser è riconosciuta da Schüco come <strong style="color:#fff">Premium Partner</strong> — il più alto livello di certificazione — e <strong style="color:#fff">Service Partner</strong> per l'assistenza tecnica certificata su tutti i sistemi in alluminio.</p>
+        <h2 id="h-sch" style="color:#fff">Infissi Schüco installati<br/>da tecnici certificati</h2>
+        <p style="color:rgba(255,255,255,.7);margin-bottom:12px">Sunser è rivenditore e installatore certificato dei sistemi Schüco in alluminio. Ogni finestra, porta e serramento viene montato da tecnici formati direttamente su profili e sistemi originali Schüco.</p>
         <ul class="check-list">
           <li><svg width="20" height="20" fill="none" stroke="#7ab51d" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Profili in alluminio certificati Schüco</li>
           <li><svg width="20" height="20" fill="none" stroke="#7ab51d" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Installatori formati e certificati Schüco</li>
@@ -1255,6 +1301,28 @@ navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
 document.addEventListener('click', e => {
   if(!nav.contains(e.target)){ navLinks.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
 });
+
+/* ── Services dropdown ── */
+const servDropdown = document.getElementById('servDropdown');
+const servToggle = document.getElementById('servToggle');
+servToggle.addEventListener('click', e => {
+  e.stopPropagation();
+  const open = servDropdown.classList.toggle('open');
+  servToggle.setAttribute('aria-expanded', String(open));
+});
+document.addEventListener('click', e => {
+  if (!servDropdown.contains(e.target)) {
+    servDropdown.classList.remove('open');
+    servToggle.setAttribute('aria-expanded', 'false');
+  }
+});
+servDropdown.querySelectorAll('.nav-dropdown-item').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  servDropdown.classList.remove('open');
+  servToggle.setAttribute('aria-expanded', 'false');
+  burger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}));
 
 /* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
