@@ -1,0 +1,8 @@
+# Vecchie pagine ancora indicizzate da Google -> pagine attuali (301 = spostamento permanente)
+/prodotti      /serramenti.html    301
+/prodotti/*    /serramenti.html    301
+/avvolgibili   /serramenti.html    301
+/zanzariere    /ferro-vetro.html   301
+/lavorazioni   /ferro-vetro.html   301
+/servizi       /#servizi           301
+/contatti      /#contatti          301
