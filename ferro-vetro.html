@@ -452,29 +452,29 @@ textarea{resize:vertical;min-height:120px}
           <form id="cForm" novalidate>
             <div class="fg">
               <label for="fn">Nome e Cognome <span class="req">*</span></label>
-              <input type="text" id="fn" placeholder="Mario Rossi" required autocomplete="name" aria-describedby="fn-e"/>
+              <input type="text" id="fn" name="name" placeholder="Mario Rossi" required autocomplete="name" aria-describedby="fn-e"/>
               <span class="ferr" id="fn-e" role="alert"></span>
             </div>
             <div class="fg-row">
               <div class="fg">
                 <label for="fe">Email <span class="req">*</span></label>
-                <input type="email" id="fe" placeholder="mario@example.com" required autocomplete="email" aria-describedby="fe-e"/>
+                <input type="email" id="fe" name="email" placeholder="mario@example.com" required autocomplete="email" aria-describedby="fe-e"/>
                 <span class="ferr" id="fe-e" role="alert"></span>
               </div>
               <div class="fg">
                 <label for="ft">Telefono</label>
-                <input type="tel" id="ft" placeholder="+39 …" autocomplete="tel"/>
+                <input type="tel" id="ft" name="tel" placeholder="+39 …" autocomplete="tel"/>
               </div>
             </div>
             <div class="fg">
               <label for="fm">Messaggio <span class="req">*</span></label>
-              <textarea id="fm" rows="4" placeholder="Es.: Grata apribile per finestra 100×140 cm, stile classico…" required aria-describedby="fm-e"></textarea>
+              <textarea id="fm" name="message" rows="4" placeholder="Es.: Grata apribile per finestra 100×140 cm, stile classico…" required aria-describedby="fm-e"></textarea>
               <span class="ferr" id="fm-e" role="alert"></span>
             </div>
             <div class="fg">
               <label class="cb-label">
-                <input type="checkbox" id="fp" required aria-describedby="fp-e"/>
-                <span>Ho letto e accetto la <a href="index.html" style="color:#7ab51d;text-decoration:underline">Privacy Policy</a> <span class="req">*</span></span>
+                <input type="checkbox" id="fp" name="privacy" required aria-describedby="fp-e"/>
+                <span>Ho letto e accetto la <a href="index.html#privacy" target="_blank" rel="noopener" style="color:#7ab51d;text-decoration:underline">Privacy Policy</a> <span class="req">*</span></span>
               </label>
               <span class="ferr" id="fp-e" role="alert"></span>
             </div>
@@ -486,7 +486,8 @@ textarea{resize:vertical;min-height:120px}
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               Richiesta inviata! Ti contatteremo entro 24 ore.
             </div>
-          </form>
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+</form>
         </div>
       </div>
     </div>
@@ -550,7 +551,7 @@ document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
 const form=document.getElementById('cForm'),sbtn=document.getElementById('sbtn'),stxt=document.getElementById('sbtn-txt'),spin=document.getElementById('sbtn-spin'),fok=document.getElementById('fok');
 function setE(id,msg){const f=document.getElementById(id),e=document.getElementById(id+'-e');if(!f||!e)return;f.classList.toggle('err',!!msg);e.textContent=msg||'';}
 function validate(){let ok=true;const n=document.getElementById('fn'),em=document.getElementById('fe'),msg=document.getElementById('fm'),pr=document.getElementById('fp');if(!n.value.trim()){setE('fn','Inserisci il tuo nome.');ok=false;}else setE('fn','');if(!em.value.trim()){setE('fe','Inserisci la tua email.');ok=false;}else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em.value.trim())){setE('fe','Formato email non valido.');ok=false;}else setE('fe','');if(!msg.value.trim()){setE('fm','Scrivi un messaggio.');ok=false;}else setE('fm','');if(!pr.checked){setE('fp','Accetta la Privacy Policy.');ok=false;}else setE('fp','');return ok;}
-form.addEventListener('submit',async e=>{e.preventDefault();if(!validate()){const f=form.querySelector('.err');if(f)f.focus();return;}sbtn.disabled=true;stxt.textContent='Invio in corso…';spin.classList.remove('hidden');await new Promise(r=>setTimeout(r,1400));sbtn.classList.add('hidden');fok.classList.remove('hidden');form.reset();});
+form.addEventListener('submit',async e=>{e.preventDefault();if(!validate()){const f=form.querySelector('.err');if(f)f.focus();return;}sbtn.disabled=true;stxt.textContent='Invio in corso…';spin.classList.remove('hidden');try{const d=Object.fromEntries(new FormData(form));if(d.botcheck){return;}delete d.privacy;const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.assign({access_key:'fb44ad1a-fea4-4e2c-9bb8-90b1bc84afd6',subject:'Nuova richiesta dal sito sunser.it',from_name:'Sito sunser.it',replyto:d.email,pagina:location.pathname},d))});const j=await r.json().catch(()=>({}));if(!r.ok||!j.success)throw new Error(j.message||r.status);sbtn.classList.add('hidden');fok.classList.remove('hidden');form.reset();}catch(err){sbtn.disabled=false;stxt.textContent='Invia richiesta';spin.classList.add('hidden');let fe=document.getElementById('ferr');if(!fe){fe=document.createElement('p');fe.id='ferr';fe.setAttribute('role','alert');fe.style.cssText='color:#c0392b;margin-top:12px;font-size:.9rem';sbtn.insertAdjacentElement('afterend',fe);}fe.innerHTML='Invio non riuscito. Riprova o chiamaci al <a href="tel:+39067231523">06 7231523</a>.';}});
 </script>
 </body>
 </html>

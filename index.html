@@ -1304,7 +1304,8 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
               <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               Messaggio inviato! Ti risponderemo entro 24 ore.
             </div>
-          </form>
+          <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true"/>
+</form>
         </div>
       </div>
 
@@ -1391,7 +1392,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
     <h3>4. Periodo di conservazione</h3>
     <p>I dati sono conservati per un massimo di 12 mesi dalla ricezione della richiesta, salvo diversi obblighi di legge.</p>
     <h3>5. Destinatari</h3>
-    <p>I dati non sono ceduti a terzi. Potrebbero essere accessibili ai fornitori di servizi tecnici (hosting, email) che operano come responsabili del trattamento ai sensi dell'art. 28 GDPR.</p>
+    <p>I dati non sono ceduti a terzi. Potrebbero essere accessibili ai fornitori di servizi tecnici che operano come responsabili del trattamento ai sensi dell'art. 28 GDPR: hosting del sito (Cloudflare), servizio di posta elettronica (Register.it) e servizio di inoltro del modulo di contatto (Web3Forms), che riceve i dati inseriti nel modulo e li trasmette via email a Sunser S.r.l.</p>
     <h3>6. Trasferimento extra-UE</h3>
     <p>I dati non vengono trasferiti al di fuori dello Spazio Economico Europeo.</p>
     <h3>7. I tuoi diritti (artt. 15–22 GDPR)</h3>
@@ -1539,11 +1540,9 @@ form.addEventListener('submit', async e => {
   sbtn.disabled = true;
   stxt.textContent = 'Invio in corso…';
   spin.classList.remove('hidden');
-  await new Promise(r => setTimeout(r, 1400));
-  sbtn.classList.add('hidden');
-  fok.classList.remove('hidden');
-  form.reset();
+  try{const d=Object.fromEntries(new FormData(form));if(d.botcheck){return;}delete d.privacy;const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.assign({access_key:'fb44ad1a-fea4-4e2c-9bb8-90b1bc84afd6',subject:'Nuova richiesta dal sito sunser.it',from_name:'Sito sunser.it',replyto:d.email,pagina:location.pathname},d))});const j=await r.json().catch(()=>({}));if(!r.ok||!j.success)throw new Error(j.message||r.status);sbtn.classList.add('hidden');fok.classList.remove('hidden');form.reset();}catch(err){sbtn.disabled=false;stxt.textContent='Invia messaggio';spin.classList.add('hidden');let fe=document.getElementById('ferr');if(!fe){fe=document.createElement('p');fe.id='ferr';fe.setAttribute('role','alert');fe.style.cssText='color:#c0392b;margin-top:12px;font-size:.9rem';sbtn.insertAdjacentElement('afterend',fe);}fe.innerHTML='Invio non riuscito. Riprova o chiamaci al <a href="tel:+39067231523">06 7231523</a>.';}
 });
+if(location.hash==='#privacy'&&typeof openModal==='function'){openModal('privacyModal');}
 </script>
 </body>
 </html>
