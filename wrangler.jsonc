@@ -1,0 +1,17 @@
+// Configurazione del sito sunser.it su Cloudflare Workers (solo file statici).
+// Ogni modifica salvata sul ramo main viene pubblicata automaticamente.
+{
+  "name": "sunser-website",
+  "compatibility_date": "2025-09-01",
+  "assets": {
+    "directory": "./sito",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "routes": [
+    { "pattern": "sunser.it", "custom_domain": true },
+    { "pattern": "www.sunser.it", "custom_domain": true }
+  ],
+  "workers_dev": true,
+  "preview_urls": true
+}
