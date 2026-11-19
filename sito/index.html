@@ -761,12 +761,18 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
 <style>@media(max-width:640px){.hero-scroll{display:none}}</style>
 <style>.nav-burger{margin-left:auto}</style>
 <style>
-.hero-show .hs-col{position:relative;overflow:hidden;height:100%}
-.hero-show .hs-col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:0;transform:scale(1.02);transition:opacity 1.6s ease}
-.hero-show .hs-col img.on{opacity:1;animation:hsZoom 9s ease-out forwards}
-@keyframes hsZoom{from{transform:scale(1.02)}to{transform:scale(1.12)}}
+.hero-show .hs-col{position:relative;overflow:hidden;height:100%;background:#1a1a1a}
+.hero-show .hs-col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 45%;opacity:0;z-index:0;will-change:transform,opacity}
+.hero-show .hs-col img.prev{opacity:1;z-index:1}
+.hero-show .hs-col img.on{opacity:1;z-index:2;transition:opacity 1s ease}
+.hero-show .hs-col img.on.enter{opacity:0}
+.hero-show .kb1{animation:kb1 5.5s linear both}.hero-show .kb2{animation:kb2 5.5s linear both}.hero-show .kb3{animation:kb3 5.5s linear both}.hero-show .kb4{animation:kb4 5.5s linear both}
+@keyframes kb1{from{transform:scale(1.04)}to{transform:scale(1.18)}}
+@keyframes kb2{from{transform:scale(1.2)}to{transform:scale(1.05)}}
+@keyframes kb3{from{transform:scale(1.15) translateX(-3%)}to{transform:scale(1.15) translateX(3%)}}
+@keyframes kb4{from{transform:scale(1.15) translateX(3%) translateY(1%)}to{transform:scale(1.15) translateX(-3%) translateY(-1%)}}
 @media(max-width:768px){.hero-show{grid-template-columns:1fr}.hero-show .hs-col:not(:first-child){display:none}}
-@media(prefers-reduced-motion:reduce){.hero-show .hs-col img.on{animation:none}}
+@media(prefers-reduced-motion:reduce){.hero-show [class*="kb"]{animation:none}}
 </style>
 </head>
 <body>
@@ -1622,14 +1628,35 @@ form.addEventListener('submit', async e => {
 if(location.hash==='#privacy'&&typeof openModal==='function'){openModal('privacyModal');}
 </script>
 <a href="https://wa.me/393939492740?text=Buongiorno%2C%20vorrei%20informazioni%20per%20un%20preventivo." class="wa-fab" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.4 9.4 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.32 11.32 0 0012.05.7C5.79.7.7 5.79.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.4l5.82-1.53a11.33 11.33 0 005.62 1.43h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02z"/></svg><span class="wa-lbl">WhatsApp</span></a>
-<script>(function(){var cols=[].slice.call(document.querySelectorAll('.hero-show .hs-col'));if(!cols.length)return;
+<script>(function(){
+var cols=[].slice.call(document.querySelectorAll('.hero-show .hs-col'));if(!cols.length)return;
 var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-function load(){cols.forEach(function(c){c.querySelectorAll('img[data-src]').forEach(function(i){i.src=i.dataset.src;i.removeAttribute('data-src');});});}
-if(document.readyState==='complete')load();else window.addEventListener('load',load);
+var mobile=window.matchMedia('(max-width:768px)').matches;
+var all=[];cols.forEach(function(c){[].slice.call(c.querySelectorAll('img')).forEach(function(i,k){(all[k]=all[k]||[]).push(i);});});
+// su telefono tutte le 9 foto nella prima colonna, alternando le colonne
+if(mobile){var order=[];all.forEach(function(r){r.forEach(function(i){order.push(i);});});order.forEach(function(i){cols[0].appendChild(i);});cols=[cols[0]];}
+function src(i){if(i.dataset.src){i.src=i.dataset.src;i.removeAttribute('data-src');}return i.decode?i.decode().catch(function(){}):Promise.resolve();}
+var kb=0;function fx(i){i.classList.remove('kb1','kb2','kb3','kb4');void i.offsetWidth;if(!still)i.classList.add('kb'+(kb++%4+1));}
+cols.forEach(function(c){var f=c.querySelector('img.on');if(f)fx(f);});
+function step(c){
+  var imgs=[].slice.call(c.querySelectorAll('img'));var k=imgs.findIndex(function(i){return i.classList.contains('on')});
+  var cur=imgs[k],nxt=imgs[(k+1)%imgs.length];
+  return src(nxt).then(function(){
+    imgs.forEach(function(i){if(i!==cur)i.classList.remove('prev');});
+    cur.classList.remove('on');cur.classList.add('prev');
+    nxt.classList.add('on','enter');fx(nxt);void nxt.offsetWidth;nxt.classList.remove('enter');
+    setTimeout(function(){cur.classList.remove('prev');},1100);
+  });
+}
+function start(){
+  cols.forEach(function(c){[].slice.call(c.querySelectorAll('img')).slice(1,2).forEach(src);});
+  var hold=mobile?3500:4200;
+  cols.forEach(function(c,n){
+    setTimeout(function(){(function loop(){setTimeout(function(){if(document.hidden){loop();return;}step(c).then(loop);},hold);})();},n*1400);
+  });
+}
 if(still)return;
-var mobile=window.matchMedia('(max-width:768px)');
-function next(c){var imgs=[].slice.call(c.querySelectorAll('img'));var k=imgs.findIndex(function(i){return i.classList.contains('on')});var n=imgs[(k+1)%imgs.length];if(!n.complete||!n.naturalWidth)return;imgs[k].classList.remove('on');void n.offsetWidth;n.classList.add('on');}
-cols.forEach(function(c,i){setTimeout(function(){setInterval(function(){if(document.hidden)return;if(mobile.matches&&i>0)return;next(c);},7000);},2200*i);});
+if(document.readyState==='complete')setTimeout(start,0);else window.addEventListener('load',start);
 })();</script>
 </body>
 </html>
