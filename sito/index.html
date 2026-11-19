@@ -1635,7 +1635,7 @@ var mobile=window.matchMedia('(max-width:768px)').matches;
 var all=[];cols.forEach(function(c){[].slice.call(c.querySelectorAll('img')).forEach(function(i,k){(all[k]=all[k]||[]).push(i);});});
 // su telefono tutte le 9 foto nella prima colonna, alternando le colonne
 if(mobile){var order=[];all.forEach(function(r){r.forEach(function(i){order.push(i);});});order.forEach(function(i,n){i.classList.toggle('on',n===0);cols[0].appendChild(i);});cols=[cols[0]];}
-function src(i){if(i.dataset.src){i.src=i.dataset.src;i.removeAttribute('data-src');}return i.decode?i.decode().catch(function(){}):Promise.resolve();}
+function src(i){if(i.dataset.src){i.src=i.dataset.src;i.removeAttribute('data-src');}return new Promise(function(ok){if(i.complete&&i.naturalWidth){ok();return;}var done=function(){ok();};i.addEventListener('load',done,{once:true});i.addEventListener('error',done,{once:true});setTimeout(done,3000);});}
 var kb=0;function fx(i){i.classList.remove('kb1','kb2','kb3','kb4');void i.offsetWidth;if(!still)i.classList.add('kb'+(kb++%4+1));}
 cols.forEach(function(c){var f=c.querySelector('img.on');if(f)fx(f);});
 function step(c){
