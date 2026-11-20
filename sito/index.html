@@ -792,6 +792,13 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
   .nav-links{max-height:calc(100vh - var(--nav-h));overflow-y:auto}
 }
 </style>
+<style>
+.sr-head{text-align:center;margin:64px auto 20px;max-width:640px}.sr-head h3{font-size:1.5rem;margin-bottom:8px}.sr-head p{color:var(--c-muted,#666)}
+.sr-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:repeat(2,200px);gap:12px}
+.sr-grid a{display:block;border-radius:14px;overflow:hidden}.sr-grid .sr-big{grid-row:span 2}
+.sr-grid img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.sr-grid a:hover img{transform:scale(1.04)}
+@media(max-width:700px){.sr-grid{grid-template-columns:1fr 1fr;grid-template-rows:none;grid-auto-rows:auto}.sr-grid a{aspect-ratio:4/3}.sr-grid .sr-big{grid-column:span 2;grid-row:auto;aspect-ratio:3/2}}
+</style>
 </head>
 <body>
 
@@ -842,7 +849,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
             </a></li>
             <li class="nav-dd-head" role="presentation">In evidenza</li>
             <li><a href="/lavori#villa-circeo" class="nav-dropdown-item" role="menuitem">
-              Infissi Schüco · Villa al Circeo
+              Infissi Schüco
             </a></li>
             <li><a href="/lavori#infissi-ad-arco" class="nav-dropdown-item" role="menuitem">
               Infissi centinati
@@ -957,7 +964,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
           <img src="foto/lavori/villa-circeo/portafinestra-schueco-inferriate-vista-mare-circeo-thumb.jpg" alt="Portafinestra in alluminio Schüco con inferriate su misura e vista mare, lavoro Sunser al Circeo" width="700" height="400" loading="lazy"/>
         </div>
         <div class="mosaic-sm">
-          <img src="foto/lavori/villa-circeo/maniglia-schueco-dettaglio-circeo-thumb.jpg" alt="Dettaglio della maniglia Schüco su un serramento installato da Sunser" width="400" height="280" loading="lazy"/>
+          <img src="foto/showroom/showroom-maniglie-schueco-thumb.jpg" alt="Maniglie Schüco esposte nello showroom Sunser di Ciampino" width="400" height="280" loading="lazy"/>
         </div>
         <div class="mosaic-sm">
           <img src="foto/lavori/infissi-ad-arco/finestra-ad-arco-aperta-thumb.jpg" alt="Finestra centinata in alluminio Schüco realizzata da Sunser" width="400" height="280" loading="lazy"/>
@@ -1206,7 +1213,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
         <a href="#contatti" class="btn btn-dark">Parla con noi</a>
       </div>
       <div class="media-wrap fi" style="transition-delay:.15s">
-        <img src="foto/lavori/villa-circeo/portafinestra-aperta-inferriata-apribile-circeo-thumb.jpg" alt="Portafinestra e inferriata apribile realizzate da Sunser, aperte sul terrazzo" width="900" height="600" loading="lazy"/>
+        <img src="foto/showroom/showroom-schueco-area-consulenza-thumb.jpg" alt="Lo showroom Sunser a Ciampino con l'area consulenza e i serramenti Schüco esposti" width="800" height="533" loading="lazy"/>
         <div class="media-pin">
           <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
           <div>
@@ -1215,6 +1222,17 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
           </div>
         </div>
       </div>
+    </div>
+    <div class="sr-head fi">
+      <h3>Il nostro showroom di 900 m² a Ciampino</h3>
+      <p>Vieni a toccare con mano infissi Schüco, porte, tapparelle e inferriate, con campionature e simulatori ufficiali. Via Enzo Ferrari 91.</p>
+    </div>
+    <div class="sr-grid fi">
+      <a href="foto/showroom/showroom-sunser-schueco-ciampino.jpg" class="sr-big"><img src="foto/showroom/showroom-sunser-schueco-ciampino-thumb.jpg" alt="Showroom Sunser a Ciampino con esposizione Schüco" loading="lazy"/></a>
+      <a href="foto/showroom/showroom-infissi-porte-esposizione.jpg"><img src="foto/showroom/showroom-infissi-porte-esposizione-thumb.jpg" alt="Infissi e porte esposti nello showroom Sunser" loading="lazy"/></a>
+      <a href="foto/showroom/showroom-maniglie-schueco.jpg"><img src="foto/showroom/showroom-maniglie-schueco-thumb.jpg" alt="Parete delle maniglie Schüco nello showroom Sunser" loading="lazy"/></a>
+      <a href="foto/showroom/showroom-portefinestre-scorrevoli.jpg"><img src="foto/showroom/showroom-portefinestre-scorrevoli-thumb.jpg" alt="Portefinestre e scorrevoli esposti nello showroom Sunser" loading="lazy"/></a>
+      <a href="foto/showroom/showroom-infissi-grate-persiane.jpg"><img src="foto/showroom/showroom-infissi-grate-persiane-thumb.jpg" alt="Finestre, grate e persiane esposte nello showroom Sunser" loading="lazy"/></a>
     </div>
   </div>
 </section>
