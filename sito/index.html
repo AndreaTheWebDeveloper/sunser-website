@@ -776,6 +776,22 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
 </style>
 <style>@media(max-width:1024px){.nav-links .nav-link,.nav-links .nav-cta-link{display:block}}</style>
 <style>@media(min-width:901px){#servizi .cards{grid-template-columns:1fr 1fr;max-width:980px;margin:0 auto}}</style>
+<style id="nav-dd">
+.nav-dropdown::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+#lavDropdown .nav-dropdown{min-width:250px;padding:6px 8px}
+#lavDropdown .nav-dropdown-item{padding:7px 12px}
+.nav-dd-head{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-accent,#7ab51d);padding:10px 12px 4px}
+@media(max-width:640px){
+  .nav-has-dropdown{position:static}
+  .nav-dropdown-toggle{width:100%;justify-content:space-between;padding:13px 18px;font-size:.95rem;border-radius:var(--r-sm);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:rgba(255,255,255,.06);border-radius:var(--r-sm);padding:4px 0 4px 12px;margin:2px 0 4px;display:none}
+  .nav-dropdown::before{display:none}
+  .nav-has-dropdown.open .nav-dropdown{display:block}
+  .nav-has-dropdown:hover .nav-dropdown{opacity:1}
+  .nav-dropdown-item,#lavDropdown .nav-dropdown-item{padding:10px 14px;font-size:.9rem}
+  .nav-links{max-height:calc(100vh - var(--nav-h));overflow-y:auto}
+}
+</style>
 </head>
 <body>
 
@@ -792,7 +808,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
       <ul class="nav-links" id="navLinks">
         <li><a href="#chi-siamo" class="nav-link">Chi siamo</a></li>
         <li class="nav-has-dropdown" id="servDropdown">
-          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true" id="servToggle">
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             Servizi
             <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
@@ -803,24 +819,70 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
             </a></li>
             <li><a href="/ferro-vetro" class="nav-dropdown-item" role="menuitem">
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-              Ferro e Vetro
-            </a></li>
-            <li><a href="/energia-pulita" class="nav-dropdown-item" role="menuitem">
-              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-              Fotovoltaico
+              Ferro e vetro
             </a></li>
             <li><a href="/tende-pergole-vetrate" class="nav-dropdown-item" role="menuitem">
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7h18M5 7v14M19 7v14M3 4h18"/></svg>
               Tende, pergole e vetrate
             </a></li>
+            <li><a href="/energia-pulita" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              Fotovoltaico
+            </a></li>
           </ul>
         </li>
-        <li><a href="/lavori" class="nav-link">Lavori</a></li>
+        <li class="nav-has-dropdown" id="lavDropdown">
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Lavori
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="/lavori" class="nav-dropdown-item" role="menuitem">
+              Tutti i lavori →
+            </a></li>
+            <li class="nav-dd-head" role="presentation">In evidenza</li>
+            <li><a href="/lavori#villa-circeo" class="nav-dropdown-item" role="menuitem">
+              Infissi Schüco · Villa al Circeo
+            </a></li>
+            <li><a href="/lavori#infissi-ad-arco" class="nav-dropdown-item" role="menuitem">
+              Infissi centinati
+            </a></li>
+            <li class="nav-dd-head" role="presentation">Ferro e vetro</li>
+            <li><a href="/lavori#lavorazioni-ferro" class="nav-dropdown-item" role="menuitem">
+              Lavorazioni in ferro
+            </a></li>
+            <li><a href="/lavori#inferriate-sicurezza" class="nav-dropdown-item" role="menuitem">
+              Inferriate
+            </a></li>
+            <li><a href="/lavori#separe-scorrevoli" class="nav-dropdown-item" role="menuitem">
+              Separé scorrevoli
+            </a></li>
+            <li><a href="/lavori#pareti-vetrate-ufficio" class="nav-dropdown-item" role="menuitem">
+              Pareti vetrate
+            </a></li>
+            <li class="nav-dd-head" role="presentation">Altri lavori</li>
+            <li><a href="/lavori#arredi-su-misura" class="nav-dropdown-item" role="menuitem">
+              Arredi su misura
+            </a></li>
+            <li><a href="/lavori#fotovoltaico" class="nav-dropdown-item" role="menuitem">
+              Fotovoltaico
+            </a></li>
+            <li><a href="/lavori#tapparelle" class="nav-dropdown-item" role="menuitem">
+              Tapparelle
+            </a></li>
+            <li><a href="/lavori#tende-da-sole" class="nav-dropdown-item" role="menuitem">
+              Tende da sole
+            </a></li>
+            <li><a href="/lavori#progettazione" class="nav-dropdown-item" role="menuitem">
+              Progettazione
+            </a></li>
+          </ul>
+        </li>
         <li><a href="#schueco" class="nav-link">Schüco</a></li>
-        <li><a href="#ecobonus"   class="nav-link">Ecobonus</a></li>
+        <li><a href="#ecobonus" class="nav-link">Ecobonus</a></li>
         <li><a href="#assistenza" class="nav-link">Assistenza</a></li>
-        <li><a href="#partner"    class="nav-link">Partner</a></li>
-        <li><a href="#contatti"   class="nav-cta-link">Contattaci</a></li>
+        <li><a href="#partner" class="nav-link">Partner</a></li>
+        <li><a href="#contatti" class="nav-cta-link">Contattaci</a></li>
       </ul>
     </nav>
   </div>
@@ -1575,28 +1637,6 @@ document.addEventListener('click', e => {
   if(!nav.contains(e.target)){ navLinks.classList.remove('open'); burger.setAttribute('aria-expanded','false'); }
 });
 
-/* ── Services dropdown ── */
-const servDropdown = document.getElementById('servDropdown');
-const servToggle = document.getElementById('servToggle');
-servToggle.addEventListener('click', e => {
-  e.stopPropagation();
-  const open = servDropdown.classList.toggle('open');
-  servToggle.setAttribute('aria-expanded', String(open));
-});
-document.addEventListener('click', e => {
-  if (!servDropdown.contains(e.target)) {
-    servDropdown.classList.remove('open');
-    servToggle.setAttribute('aria-expanded', 'false');
-  }
-});
-servDropdown.querySelectorAll('.nav-dropdown-item').forEach(a => a.addEventListener('click', () => {
-  navLinks.classList.remove('open');
-  servDropdown.classList.remove('open');
-  servToggle.setAttribute('aria-expanded', 'false');
-  burger.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}));
-
 /* ── Smooth scroll ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
   a.addEventListener('click', e => {
@@ -1683,5 +1723,9 @@ function start(){
 if(still)return;
 if(document.readyState==='complete')setTimeout(start,0);else window.addEventListener('load',start);
 })();</script>
+<script id="nav-dd-js">(function(){var dds=document.querySelectorAll('.nav-has-dropdown');function closeAll(x){dds.forEach(function(d){if(d!==x){d.classList.remove('open');d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');}});}
+dds.forEach(function(d){var t=d.querySelector('.nav-dropdown-toggle');t.addEventListener('click',function(e){e.stopPropagation();closeAll(d);var o=d.classList.toggle('open');t.setAttribute('aria-expanded',String(o));});
+d.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){var n=document.getElementById('navLinks');if(n)n.classList.remove('open');var b=document.querySelector('.nav-burger');if(b)b.setAttribute('aria-expanded','false');document.body.style.overflow='';closeAll(null);});});});
+document.addEventListener('click',function(e){dds.forEach(function(d){if(!d.contains(e.target)){d.classList.remove('open');d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');}});});})();</script>
 </body>
 </html>

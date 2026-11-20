@@ -107,6 +107,17 @@ h4{font-size:1rem;font-weight:700}
 .nav.scrolled::after{opacity:1}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:100%;max-width:1200px;margin:0 auto;padding:0 32px}
 .nav-links{display:flex;align-items:center;gap:2px}
+.nav-has-dropdown{position:relative}
+.nav-dropdown-toggle{display:flex;align-items:center;gap:5px;padding:8px 15px;border-radius:var(--r-sm);color:rgba(255,255,255,.75);font-size:.88rem;font-weight:500;background:none;border:none;cursor:pointer;font-family:inherit;transition:color var(--t),background var(--t)}
+.nav-dropdown-toggle:hover,.nav-dropdown-toggle.active{color:#fff;background:rgba(255,255,255,.1)}
+.nav-dropdown-toggle svg{transition:transform var(--t);flex-shrink:0}
+.nav-has-dropdown:hover .nav-dropdown-toggle svg,.nav-dropdown-toggle[aria-expanded="true"] svg{transform:rotate(180deg)}
+.nav-dropdown{position:absolute;top:calc(100% + 8px);left:0;background:#1e1e1e;border:1px solid rgba(255,255,255,.1);border-radius:var(--r-md);padding:8px;min-width:190px;box-shadow:0 16px 40px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s ease,transform .2s ease,visibility .2s;z-index:1100;list-style:none}
+.nav-has-dropdown:hover .nav-dropdown,.nav-has-dropdown.open .nav-dropdown{opacity:1;visibility:visible;transform:none}
+.nav-dropdown-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:var(--r-sm);color:rgba(255,255,255,.75);font-size:.88rem;font-weight:500;transition:color var(--t),background var(--t);white-space:nowrap}
+.nav-dropdown-item:hover{color:#fff;background:rgba(255,255,255,.1)}
+.nav-dropdown-item svg{color:var(--c-accent,#7ab51d);flex-shrink:0}
+
 .nav-link{padding:8px 15px;border-radius:var(--r-sm);color:rgba(255,255,255,.75);font-size:.88rem;font-weight:500;transition:color var(--t),background var(--t)}
 .nav-link:hover{color:#fff;background:rgba(255,255,255,.1)}
 .nav-cta-link{margin-left:12px;padding:9px 22px;border-radius:var(--r-xl);background:var(--c-accent);color:#fff;font-size:.88rem;font-weight:700;transition:all var(--t)}
@@ -324,6 +335,22 @@ textarea{resize:vertical;min-height:120px}
 .sp-zone{text-align:center;max-width:760px;margin:0 auto;color:var(--c-muted,#666);line-height:1.7}
 </style>
 <style>@media(max-width:1024px){.nav-links .nav-link,.nav-links .nav-cta-link{display:block}}</style>
+<style id="nav-dd">
+.nav-dropdown::before{content:"";position:absolute;left:0;right:0;top:-10px;height:10px}
+#lavDropdown .nav-dropdown{min-width:250px;padding:6px 8px}
+#lavDropdown .nav-dropdown-item{padding:7px 12px}
+.nav-dd-head{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--c-accent,#7ab51d);padding:10px 12px 4px}
+@media(max-width:640px){
+  .nav-has-dropdown{position:static}
+  .nav-dropdown-toggle{width:100%;justify-content:space-between;padding:13px 18px;font-size:.95rem;border-radius:var(--r-sm);border-bottom:1px solid rgba(255,255,255,.06)}
+  .nav-dropdown{position:static;opacity:1;visibility:visible;transform:none;box-shadow:none;border:none;background:rgba(255,255,255,.06);border-radius:var(--r-sm);padding:4px 0 4px 12px;margin:2px 0 4px;display:none}
+  .nav-dropdown::before{display:none}
+  .nav-has-dropdown.open .nav-dropdown{display:block}
+  .nav-has-dropdown:hover .nav-dropdown{opacity:1}
+  .nav-dropdown-item,#lavDropdown .nav-dropdown-item{padding:10px 14px;font-size:.9rem}
+  .nav-links{max-height:calc(100vh - var(--nav-h));overflow-y:auto}
+}
+</style>
 </head>
 <body>
 
@@ -337,14 +364,83 @@ textarea{resize:vertical;min-height:120px}
     </button>
     <nav aria-label="Navigazione principale">
       <ul class="nav-links" id="navLinks">
-        <li><a href="/#chi-siamo"  class="nav-link">Chi siamo</a></li>
-        <li><a href="/#servizi"    class="nav-link">Servizi</a></li>
-        <li><a href="/lavori" class="nav-link">Lavori</a></li>
-        <li><a href="/#schueco"    class="nav-link">Schüco</a></li>
-        <li><a href="/#ecobonus"   class="nav-link">Ecobonus</a></li>
+        <li><a href="/#chi-siamo" class="nav-link">Chi siamo</a></li>
+        <li class="nav-has-dropdown" id="servDropdown">
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Servizi
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="/serramenti" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M12 3v18M3 12h18"/></svg>
+              Serramenti
+            </a></li>
+            <li><a href="/ferro-vetro" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              Ferro e vetro
+            </a></li>
+            <li><a href="/tende-pergole-vetrate" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7h18M5 7v14M19 7v14M3 4h18"/></svg>
+              Tende, pergole e vetrate
+            </a></li>
+            <li><a href="/energia-pulita" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              Fotovoltaico
+            </a></li>
+          </ul>
+        </li>
+        <li class="nav-has-dropdown" id="lavDropdown">
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Lavori
+            <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <ul class="nav-dropdown" role="menu">
+            <li><a href="/lavori" class="nav-dropdown-item" role="menuitem">
+              Tutti i lavori →
+            </a></li>
+            <li class="nav-dd-head" role="presentation">In evidenza</li>
+            <li><a href="/lavori#villa-circeo" class="nav-dropdown-item" role="menuitem">
+              Infissi Schüco · Villa al Circeo
+            </a></li>
+            <li><a href="/lavori#infissi-ad-arco" class="nav-dropdown-item" role="menuitem">
+              Infissi centinati
+            </a></li>
+            <li class="nav-dd-head" role="presentation">Ferro e vetro</li>
+            <li><a href="/lavori#lavorazioni-ferro" class="nav-dropdown-item" role="menuitem">
+              Lavorazioni in ferro
+            </a></li>
+            <li><a href="/lavori#inferriate-sicurezza" class="nav-dropdown-item" role="menuitem">
+              Inferriate
+            </a></li>
+            <li><a href="/lavori#separe-scorrevoli" class="nav-dropdown-item" role="menuitem">
+              Separé scorrevoli
+            </a></li>
+            <li><a href="/lavori#pareti-vetrate-ufficio" class="nav-dropdown-item" role="menuitem">
+              Pareti vetrate
+            </a></li>
+            <li class="nav-dd-head" role="presentation">Altri lavori</li>
+            <li><a href="/lavori#arredi-su-misura" class="nav-dropdown-item" role="menuitem">
+              Arredi su misura
+            </a></li>
+            <li><a href="/lavori#fotovoltaico" class="nav-dropdown-item" role="menuitem">
+              Fotovoltaico
+            </a></li>
+            <li><a href="/lavori#tapparelle" class="nav-dropdown-item" role="menuitem">
+              Tapparelle
+            </a></li>
+            <li><a href="/lavori#tende-da-sole" class="nav-dropdown-item" role="menuitem">
+              Tende da sole
+            </a></li>
+            <li><a href="/lavori#progettazione" class="nav-dropdown-item" role="menuitem">
+              Progettazione
+            </a></li>
+          </ul>
+        </li>
+        <li><a href="/#schueco" class="nav-link">Schüco</a></li>
+        <li><a href="/#ecobonus" class="nav-link">Ecobonus</a></li>
         <li><a href="/#assistenza" class="nav-link">Assistenza</a></li>
-        <li><a href="/#partner"    class="nav-link">Partner</a></li>
-        <li><a href="#contatti"             class="nav-cta-link">Contattaci</a></li>
+        <li><a href="/#partner" class="nav-link">Partner</a></li>
+        <li><a href="#contatti" class="nav-cta-link">Contattaci</a></li>
       </ul>
     </nav>
   </div>
@@ -700,5 +796,9 @@ function validate(){let ok=true;const n=document.getElementById('fn'),em=documen
 form.addEventListener('submit',async e=>{e.preventDefault();if(!validate()){const f=form.querySelector('.err');if(f)f.focus();return;}sbtn.disabled=true;stxt.textContent='Invio in corso…';spin.classList.remove('hidden');try{const d=Object.fromEntries(new FormData(form));if(d.botcheck){return;}delete d.privacy;const r=await fetch('https://api.web3forms.com/submit',{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(Object.assign({access_key:'fb44ad1a-fea4-4e2c-9bb8-90b1bc84afd6',subject:'Nuova richiesta dal sito sunser.it',from_name:'Sito sunser.it',replyto:d.email,pagina:location.pathname},d))});const j=await r.json().catch(()=>({}));if(!r.ok||!j.success)throw new Error(j.message||r.status);sbtn.classList.add('hidden');fok.classList.remove('hidden');form.reset();}catch(err){sbtn.disabled=false;stxt.textContent='Invia richiesta';spin.classList.add('hidden');let fe=document.getElementById('ferr');if(!fe){fe=document.createElement('p');fe.id='ferr';fe.setAttribute('role','alert');fe.style.cssText='color:#c0392b;margin-top:12px;font-size:.9rem';sbtn.insertAdjacentElement('afterend',fe);}fe.innerHTML='Invio non riuscito. Riprova o chiamaci al <a href="tel:+39067231523">06 7231523</a>.';}});
 </script>
 <a href="https://wa.me/393939492740?text=Buongiorno%2C%20vorrei%20informazioni%20per%20un%20preventivo." class="wa-fab" target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp"><svg width="26" height="26" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.05 21.5h-.01a9.4 9.4 0 01-4.8-1.31l-.34-.2-3.57.93.95-3.48-.22-.36a9.4 9.4 0 01-1.44-5.02c0-5.2 4.23-9.43 9.44-9.43a9.4 9.4 0 016.67 2.77 9.37 9.37 0 012.76 6.67c0 5.2-4.23 9.43-9.44 9.43zm8.03-17.46A11.32 11.32 0 0012.05.7C5.79.7.7 5.79.7 12.05c0 2 .52 3.95 1.52 5.67L.6 23.4l5.82-1.53a11.33 11.33 0 005.62 1.43h.01c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02z"/></svg><span class="wa-lbl">WhatsApp</span></a>
+<script id="nav-dd-js">(function(){var dds=document.querySelectorAll('.nav-has-dropdown');function closeAll(x){dds.forEach(function(d){if(d!==x){d.classList.remove('open');d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');}});}
+dds.forEach(function(d){var t=d.querySelector('.nav-dropdown-toggle');t.addEventListener('click',function(e){e.stopPropagation();closeAll(d);var o=d.classList.toggle('open');t.setAttribute('aria-expanded',String(o));});
+d.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){var n=document.getElementById('navLinks');if(n)n.classList.remove('open');var b=document.querySelector('.nav-burger');if(b)b.setAttribute('aria-expanded','false');document.body.style.overflow='';closeAll(null);});});});
+document.addEventListener('click',function(e){dds.forEach(function(d){if(!d.contains(e.target)){d.classList.remove('open');d.querySelector('.nav-dropdown-toggle').setAttribute('aria-expanded','false');}});});})();</script>
 </body>
 </html>
