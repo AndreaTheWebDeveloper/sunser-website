@@ -775,6 +775,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
 @media(prefers-reduced-motion:reduce){.hero-show [class*="kb"]{animation:none}}
 </style>
 <style>@media(max-width:1024px){.nav-links .nav-link,.nav-links .nav-cta-link{display:block}}</style>
+<style>@media(min-width:901px){#servizi .cards{grid-template-columns:1fr 1fr;max-width:980px;margin:0 auto}}</style>
 </head>
 <body>
 
@@ -807,6 +808,10 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
             <li><a href="/energia-pulita" class="nav-dropdown-item" role="menuitem">
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
               Fotovoltaico
+            </a></li>
+            <li><a href="/tende-pergole-vetrate" class="nav-dropdown-item" role="menuitem">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 7h18M5 7v14M19 7v14M3 4h18"/></svg>
+              Tende, pergole e vetrate
             </a></li>
           </ul>
         </li>
@@ -1053,7 +1058,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
         </div>
         <div class="scard-body">
           <h3>Serramenti</h3>
-          <p>Infissi in alluminio a taglio termico, PVC, acciaio e legno. Facciate continue vetro-alluminio, serre bioclimatiche, verande e tapparelle avvolgibili in metallo.</p>
+          <p>Infissi in alluminio Schüco e PVC, porte d'ingresso, porte blindate e porte interne, scorrevoli, tapparelle e zanzariere.</p>
           <div class="scard-btns">
             <a href="/serramenti" class="btn btn-sm btn-primary">Scopri di più →</a>
             <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
@@ -1069,7 +1074,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
         </div>
         <div class="scard-body">
           <h3>Ferro e vetro</h3>
-          <p>Grate, persiane, cancelli e opere in ferro su misura. Pensiline in alluminio e vetro, arredo urbano, zanzariere e tende tecniche di alta qualità.</p>
+          <p>Grate, cancelli e portoni, scale d'arredo, separé e opere in ferro su misura. Lamiere pressopiegate anche conto terzi e allestimenti per matrimoni.</p>
           <div class="scard-btns">
             <a href="/ferro-vetro" class="btn btn-sm btn-primary">Scopri di più →</a>
             <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
@@ -1088,6 +1093,22 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
           <p>Progettazione e realizzazione di impianti fotovoltaici e solari-termici. Soluzioni integrate per il risparmio energetico e la sostenibilità.</p>
           <div class="scard-btns">
             <a href="/energia-pulita" class="btn btn-sm btn-primary">Scopri di più →</a>
+            <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="scard fi" style="transition-delay:.3s">
+        <div class="scard-img">
+          <img src="foto/lavori/tende-da-sole/tenda-da-sole-a-bracci-terrazzo-thumb.jpg" alt="Tenda da sole a bracci installata da Sunser su un terrazzo" width="700" height="460" loading="lazy"/>
+          <div class="scard-img-overlay"></div>
+          <div class="scard-num">04</div>
+        </div>
+        <div class="scard-body">
+          <h3>Tende, pergole e vetrate</h3>
+          <p>Tende da sole e per uffici, pergole, serre bioclimatiche, vetrate panoramiche VePa e frangisole per vivere terrazzi e balconi tutto l'anno.</p>
+          <div class="scard-btns">
+            <a href="/tende-pergole-vetrate" class="btn btn-sm btn-primary">Scopri di più →</a>
             <a href="#contatti" class="btn btn-sm btn-outline">Richiedi info</a>
           </div>
         </div>
@@ -1342,10 +1363,15 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
                   <option value="">Seleziona…</option>
                   <option>Finestre e portefinestre</option>
                   <option>Porte d'ingresso e blindate</option>
+                  <option>Porte interne</option>
                   <option>Scorrevoli e grandi vetrate</option>
                   <option>Inferriate e lavori in ferro</option>
+                  <option>Cancelli, portoni e scale in ferro</option>
                   <option>Tapparelle, persiane e zanzariere</option>
-                  <option>Tende da sole</option>
+                  <option>Tende da sole e tende per interni</option>
+                  <option>Pergole, serre bioclimatiche e vetrate panoramiche</option>
+                  <option>Lamiere pressopiegate (anche conto terzi)</option>
+                  <option>Matrimoni ed eventi su misura</option>
                   <option>Arredi su misura</option>
                   <option>Fotovoltaico</option>
                   <option>Assistenza e riparazioni</option>
@@ -1427,6 +1453,7 @@ dialog.site-modal::backdrop{background:rgba(0,0,0,.65);backdrop-filter:blur(4px)
         <ul>
           <li><a href="/serramenti">Serramenti e infissi</a></li>
           <li><a href="/ferro-vetro">Ferro e vetro</a></li>
+          <li><a href="/tende-pergole-vetrate">Tende, pergole e vetrate</a></li>
           <li><a href="/energia-pulita">Fotovoltaico</a></li>
           <li><a href="/infissi-alluminio-schueco-roma">Infissi in alluminio Schüco</a></li>
           <li><a href="/assistenza-schueco-roma">Assistenza Schüco</a></li>
